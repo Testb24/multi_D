@@ -1,0 +1,11 @@
+.btn_reload_wrap {
+    height: 30px;
+    position: relative;
+    display: flex;
+}
+
+.btn_reload {
+    /* position: absolute; */
+    /* right: 0; */
+    margin: auto;
+}

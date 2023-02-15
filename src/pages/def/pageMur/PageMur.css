@@ -1,0 +1,54 @@
+.btn_reload_wrap {
+    height: 30px;
+    position: relative;
+    display: flex;
+}
+
+.btn_reload {
+    /* position: absolute; */
+    /* right: 0; */
+    margin: auto;
+}
+
+
+.table_top {
+    background-color: rgb(76, 103, 128);
+    background-color: rgb(118, 141, 163);
+    font-size: 1.3em;
+}
+
+.table_total {
+    background-color: rgb(76, 103, 128);
+    background-color: rgb(118, 152, 184);
+}
+
+.table_form_recap {
+    background-color: rgb(58, 82, 104);
+    background-color: rgb(118, 152, 184);
+}
+
+.table_form_recap thead {
+    border-bottom: 2px solid black;
+
+}
+
+th, th input {
+    text-align: center;
+}
+
+input.table_form {
+    background-color: red;
+}
+
+
+
+.top_link {
+    color: black;
+    font-size: 1.1em;
+}
+
+.top_link:hover {
+    color: black;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+}

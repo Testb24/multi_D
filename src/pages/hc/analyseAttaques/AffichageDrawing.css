@@ -1,0 +1,301 @@
+.draw_main {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    /* background-color: aliceblue; */
+    justify-content: center;
+
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    /* width: 200px; */
+    align-items: center;
+}
+
+.village_block {
+    display: flex;
+    flex-direction: row;
+}
+
+.draw2 {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgba(106, 238, 117, 0.2); */
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    width: 100px;
+
+    /* margin-bottom: 20px; */
+    /* background-color: orange; */
+}
+
+.draw_circle {
+    border: 1px solid black;
+    margin: 3px auto;
+    border-radius: 25px;
+}
+
+.draw_circle_main {
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    border: 2px solid black;
+    margin-top: 5px;
+}
+
+.draw_circle_second {
+    height: 20px;
+    width: 20px;
+    /* background-color: rgb(159, 255, 68); */
+    background-color: rgb(255, 156, 90);
+    border: 1px solid black;
+}
+
+/* =================================== */
+/* =================================== */
+
+.draw_circle_def_spy {
+    height: 20px;
+    width: 20px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(96, 68, 255);
+    border: 1px solid black;
+    margin: 5px auto;
+    cursor: pointer;
+    position: relative;
+    top: -25px;
+}
+
+.draw_circle_def_spy_icc_block {
+    /* background-color: rgba(255, 0, 0, 0.466); */
+    cursor: pointer;
+    /* position: relative; */
+    /* top: -25px; */
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    margin: auto;
+}
+
+.draw_circle_def_spy_icc {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: black;
+    /* background-color: green; */
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.draw_circle_def_spy_icc_ok {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: rgb(66, 161, 42);
+}
+
+.draw_circle_def_spy_icc_block:hover .draw_circle_def_spy_icc {
+    /* color: white; */
+    animation: icc 2.5s infinite linear;
+}
+
+@keyframes icc {
+    0% {
+        transform: rotate(0deg);
+        /* color: rgb(0, 0, 0); */
+    }
+
+    50% {
+        /* transform: rotate(360deg); */
+        /* color: rgb(120, 108, 224); */
+    }
+
+    100% {
+        transform: rotate(360deg);
+        /* color: rgb(0, 0, 0); */
+    }
+}
+
+.draw_circle_def_spy_info {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+
+.draw_circle_def_spy_icc_block:hover>.draw_circle_def_spy_info {
+    height: auto;
+    width: 210px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(242, 255, 231);
+    border: 1px solid black;
+    /* margin: 30px auto; */
+    /* margin-top: 0px; */
+    position: relative;
+    left: 60px;
+    top: -45px;
+    margin-top: 0;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* =================================== */
+/* =================================== */
+.draw_circle_def_mur {
+    height: 20px;
+    width: 20px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(68, 149, 255);
+    border: 1px solid black;
+    margin: 8px auto;
+    cursor: pointer;
+    position: relative;
+}
+
+.draw_circle_def_mur_icc_block {
+    /* background-color: rgba(128, 0, 128, 0.452); */
+    cursor: pointer;
+    position: relative;
+    top: -5px;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    margin: auto;
+}
+
+.draw_circle_def_mur_icc {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.draw_circle_def_mur_icc_ok {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: rgb(66, 161, 42);
+}
+
+.draw_circle_def_mur_icc_block:hover .draw_circle_def_mur_icc {
+    /* color: white; */
+    animation: icc 2.5s infinite linear;
+}
+
+.draw_circle_def_mur_info {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+
+.draw_circle_def_mur_icc_block:hover>.draw_circle_def_mur_info {
+    height: auto;
+    width: 200px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(242, 255, 231);
+    border: 1px solid black;
+    /* margin: 30px auto; */
+    /* margin-top: 0px; */
+    position: relative;
+    left: 60px;
+    top: -45px;
+    margin-top: 0;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* =================================== */
+/* =================================== */
+.draw_circle_def_synchro {
+    height: 20px;
+    width: 20px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(159, 255, 68);
+    border: 1px solid black;
+    margin: 30px auto;
+    margin-top: 20px;
+    cursor: pointer;
+
+
+}
+
+.draw_circle_def_synchro_icc_block {
+    /* background-color: rgba(0, 128, 0, 0.63); */
+    cursor: pointer;
+    position: relative;
+    top: -5px;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    margin: auto;
+}
+
+.draw_circle_def_synchro_icc {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.draw_circle_def_synchro_icc_ok {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: rgb(66, 161, 42);
+}
+
+.draw_circle_def_synchro_icc_block:hover .draw_circle_def_synchro_icc {
+    /* color: white; */
+    animation: icc 2.5s infinite linear;
+}
+
+.draw_circle_def_synchro_info {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+
+.draw_circle_def_synchro_icc_block:hover>.draw_circle_def_synchro_info {
+    height: auto;
+    width: 230px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(242, 255, 231);
+    border: 1px solid black;
+    /* margin: 30px auto; */
+    /* margin-top: 0px; */
+    position: relative;
+    left: 60px;
+    top: -45px;
+    margin-top: 0;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* =================================== */
+/* =================================== */
+.draw_vague_txt {
+    position: relative;
+    top: -14px;
+    left: 8px;
+    /* font-size: 200; */
+    font-weight: 800;
+}
+
+
+
+
+.link_coo_draw_zone {
+    color: black;
+    font-weight: 800;
+    font-size: 1.2em;
+}

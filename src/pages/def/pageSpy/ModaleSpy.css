@@ -1,0 +1,55 @@
+.ModaleSpy_wrap {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ModaleSpy_box {
+    padding: 0px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.ModaleSpy_form {
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ModaleSpy_form button {
+    margin: 20px;
+}
+
+.ModaleSpy_titre {
+    padding: 10px;
+    margin:0;
+    font-weight: 700;
+}
+
+.ModaleSpy_quit {
+    cursor:pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 139, 139);
+    padding: 10px;
+    margin:0;
+}
+
+.ModaleSpy_quit:hover {
+    background-color: red;
+}

@@ -1,0 +1,57 @@
+.mur_table{
+    background-color: rgb(151, 151, 151);
+}
+.mur_table td, .mur_table th{
+   text-align: center;
+}
+.mur_table_thead{
+    background-color: rgb(134, 134, 134);
+}
+.mur_table_tbody{
+    background-color: rgb(121, 120, 120);
+}
+.mur_table_tbody>tr{
+    cursor: pointer;
+}
+.mur_table_tbody>tr:hover{
+background-color: rgb(85, 85, 85);
+}
+
+.mur_option_wrap{
+    margin-top : 15px;
+}
+
+.mur_option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table_cell_remplissage_ok{
+    background-color: rgba(0, 148, 62, 0.8);
+    color: #00c853;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.table_cell_remplissage_close{
+    background-color: rgba(226, 53, 0, 0.6);
+    color:#fb8c00 ;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.table_cell_remplissage_not{
+    background-color: rgba(167, 0, 0, 0.6);
+    color: #d50000 ;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.table_cell_barrée{
+    text-decoration-line: line-through;
+}
+
+th.table_cell_nonbarrée{
+    text-decoration-line: none;
+}

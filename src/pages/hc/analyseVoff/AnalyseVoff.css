@@ -1,0 +1,209 @@
+.AVoff_link_table {
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.AVoff_link_table:hover {
+    color: black;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.AVoff_top_wrap {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: goldenrod; */
+    align-items: center;
+}
+
+.AVoff_title_page {
+    text-align: center;
+    /* margin: 0 20%; */
+    font-size: 1.4em;
+    font-weight: 800;
+    /* background-color: red; */
+}
+
+.AVoff_btn_loc_left {
+    margin-left: 15%;
+}
+
+.AVoff_btn_loc_right {
+    margin-right: 15%;
+}
+
+.AVoff_select_resize {
+    width: 280px;
+    margin: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+
+.AVoff_table_1 {
+    width: 75%;
+    margin: 25px auto 35px;
+}
+
+.AVoff_table_2 {
+    width: 90%;
+    margin: auto;
+}
+
+
+.AVoff_action_wrap {
+    width: 75%;
+    margin: auto;
+    /* background-color: aliceblue; */
+}
+
+.AVoff_action_title {
+    text-align: center;
+    font-weight: 700;
+}
+
+.AVoff_action_icc_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+/* =================================== */
+/* =================================== */
+.AVoff_draw_circle_def_spy_icc_block {
+    /* background-color: rgba(255, 0, 0, 0.466); */
+    cursor: pointer;
+    /* position: relative; */
+    /* top: -25px; */
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    /* margin: auto; */
+}
+
+.AVoff_draw_circle_def_spy_icc {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: black;
+    /* background-color: green; */
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.AVoff_draw_circle_def_spy_icc_ok {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: rgb(66, 161, 42);
+}
+
+.AVoff_draw_circle_def_spy_icc_block:hover .AVoff_draw_circle_def_spy_icc {
+    animation: icc 2.5s infinite linear;
+}
+
+@keyframes icc {
+    0% {
+        transform: rotate(0deg);
+        /* color: rgb(0, 0, 0); */
+    }
+
+    50% {
+        /* transform: rotate(360deg); */
+        /* color: rgb(120, 108, 224); */
+    }
+
+    100% {
+        transform: rotate(360deg);
+        /* color: rgb(0, 0, 0); */
+    }
+}
+
+.AVoff_draw_circle_def_spy_info {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+
+.AVoff_draw_circle_def_spy_icc_block:hover>.AVoff_draw_circle_def_spy_info {
+    height: auto;
+    width: 210px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(242, 255, 231);
+    border: 1px solid black;
+    /* margin: 30px auto; */
+    /* margin-top: 0px; */
+    position: relative;
+    left: 60px;
+    top: -45px;
+    margin-top: 0;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* =================================== */
+/* =================================== */
+.AVoff_draw_circle_def_mur_icc_block {
+    /* background-color: rgba(128, 0, 128, 0.452); */
+    cursor: pointer;
+    /* position: relative; */
+    /* top: -5px; */
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    /* margin: auto; */
+}
+
+.AVoff_draw_circle_def_mur_icc {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.AVoff_draw_circle_def_mur_icc_ok {
+    font-size: 1.8em;
+    margin: 10px 0;
+    padding: 0;
+    color: rgb(66, 161, 42);
+}
+
+.AVoff_draw_circle_def_mur_icc_block:hover .AVoff_draw_circle_def_mur_icc {
+    /* color: white; */
+    animation: icc 2.5s infinite linear;
+}
+
+.AVoff_draw_circle_def_mur_info {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+
+.AVoff_draw_circle_def_mur_icc_block:hover>.AVoff_draw_circle_def_mur_info {
+    height: auto;
+    width: 200px;
+    /* background-color: rgb(68, 149, 255); */
+    background-color: rgb(242, 255, 231);
+    border: 1px solid black;
+    /* margin: 30px auto; */
+    /* margin-top: 0px; */
+    position: relative;
+    left: 60px;
+    top: -45px;
+    margin-top: 0;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* =================================== */
+/* =================================== */
