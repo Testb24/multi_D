@@ -33,6 +33,7 @@ export default function ListPlayers() {
 
   return (
     <div className='container'>
+      <p>v1</p>
       <div className="project-list section">
         {players && players.length > 0 &&
           <table className='highlight striped centered'>
