@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './GestionVivi.css';
-import { fetchPlayersCOA, fetchVivisCOA, saveVivi5 } from './functions_gestionVivi';
+import { fetchPlayersCOA, fetchVivisCOA, saveVivi5, fetchVivi } from './functions_gestionVivi';
 
 export default function GestionVivi() {
 
@@ -24,9 +24,9 @@ export default function GestionVivi() {
   async function handleChangePlayer(playerId) {
     console.log(playerId)
     // setPlayers(playerId);
-    let listVivis = await fetchVivisCOA(playerId)
+    let listVivis = await fetchVivisCOA(playerId);
     setVivis(listVivis);
-    listVivis = listVivis.sort((a, b) => b.Pop - a.Pop)
+    listVivis = listVivis.sort((a, b) => b.Pop - a.Pop);
     console.log(listVivis);
   }
 
@@ -150,32 +150,92 @@ export default function GestionVivi() {
   }
 
 
+  const [coo, setCoo] = useState([26, 83]);
+  function handleChangeCoo(value, i) {
+
+    if (value > -400 && value < 400) {
+      let temp = coo;
+      temp[i] = parseInt(value);
+      setCoo([].concat(temp))
+    }
+
+  }
+
+  async function searchTown() {
+    console.log(coo)
+    let a = await fetchVivi(coo)
+    console.log(a)
+    setVivis(a)
+  }
+  // 3 gaulois
+  // 2 germain
+  // 1 romain
+  // 5 natar
   return (
     <div>
       <h2>Gestion des vivis COA</h2>
 
-      <button
+      <div className='GV_select_top_wrap'>
+
+        {/* <label htmlFor="player-select">Choose a player:</label> */}
+        <select
+          name="player"
+          id="player-select"
+          className="browser-default select_resize"
+          onChange={(e) => handleChangePlayer(e.target.value)}
+          defaultValue={"0"}
+        >
+          <option value="0" disabled>--Joueur--</option>
+          {/* <option value="1">Test name</option> */}
+          {players && players.length > 0 && players.map((player, index) => {
+            return (
+              <option key={index} value={player._id}>{player.Un}</option>
+            )
+          })}
+        </select>
+
+        <div className='GV_input_wrap'>
+
+          <div className='GV_input_wrap'>
+            {/* <span>X : </span> */}
+            <p className=''>X :</p>
+            <input
+              max={400}
+              min={-400}
+              type="number"
+              value={coo[0]}
+              onChange={(e) => handleChangeCoo(e.target.value, 0)}
+              className='browser-default GV_input'
+              id='ptMax'
+            ></input>
+          </div>
+
+          <div className='GV_input_wrap'>
+            <p htmlFor="player-select ">Y :</p>
+            <input
+              max={400}
+              min={-400}
+              type="number"
+              value={coo[1]}
+              onChange={(e) => handleChangeCoo(e.target.value, 1)}
+              className='browser-default GV_input'
+              id='ptMax'
+            ></input>
+          </div>
+
+          <button
+            className='btn blue'
+            onClick={() => searchTown()}>Search</button>
+        </div>
+
+
+      </div>
+
+      {vivis && vivis.length > 0 && <button
         onClick={() => handleSave()}
-      >Save changes</button>
+      >Save changes</button>}
 
-      {/* <label htmlFor="player-select">Choose a player:</label> */}
-      <select
-        name="player"
-        id="player-select"
-        className="browser-default select_resize"
-        onChange={(e) => handleChangePlayer(e.target.value)}
-        defaultValue={"0"}
-      >
-        <option value="0" disabled>--Joueur--</option>
-        {/* <option value="1">Test name</option> */}
-        {players && players.length > 0 && players.map((player, index) => {
-          return (
-            <option key={index} value={player._id}>{player.Un}</option>
-          )
-        })}
-      </select>
-
-      <div className='effectCompte_wrap'>
+      {vivis && vivis.length > 0 && <div className='effectCompte_wrap'>
         <p className='' >Effet compte</p>
         <select
           name="roleAcc"
@@ -192,7 +252,7 @@ export default function GestionVivi() {
             )
           })}
         </select>
-      </div>
+      </div>}
 
 
       <table>
@@ -203,6 +263,7 @@ export default function GestionVivi() {
             <th>Pop</th>
             <th>Coo</th>
             <th>Rôle</th>
+            <th>Troupes</th>
           </tr>
         </thead>
         <tbody>
@@ -213,7 +274,7 @@ export default function GestionVivi() {
                 <th>{vivi.Pop}</th>
                 <th>
                   <a href={"https://ts1.x1.europe.travian.com/position_details.php?x=" + vivi.X + "&y=" + vivi.Y}
-                    target="_blank" >
+                    target="_blank" rel="noreferrer" >
                     {vivi.X + "/" + vivi.Y}
                   </a>
                 </th>
@@ -241,6 +302,61 @@ export default function GestionVivi() {
                     )
                   })}
                 </th>
+                <th>
+                  {/* ROMAIN */}
+                  {vivi.T === "1" &&
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>impé</th>
+                          <th>toris</th>
+                          <th>cae</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th></th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  }
+                  {/* GERMAIN */}
+                  {vivi.T === "2" &&
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>gg</th>
+                          <th>h</th>
+                          <th>teu</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th></th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  }
+                  {/* GAULOIS */}
+                  {vivi.T === "3" &&
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>é</th>
+                          <th>touta</th>
+                          <th>hed</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>1000</th>
+                          <th>0</th>
+                          <th>200</th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  }
+                </th>
               </tr>)
           })
           }
@@ -251,5 +367,3 @@ export default function GestionVivi() {
 
   )
 }
-
-

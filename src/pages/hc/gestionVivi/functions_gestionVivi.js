@@ -4,13 +4,17 @@ import {
     getDocs,
     collection,
     where,
-    addDoc,
+    // addDoc,
     setDoc,
     doc,
-    serverTimestamp
+    // serverTimestamp
 } from "firebase/firestore";
 
-import { db, app, auth } from '../../../config/firebaseConfig';
+import {
+    db,
+    // app, 
+    // auth 
+} from '../../../config/firebaseConfig';
 
 const fetchPlayersCOA = async (allyArr) => {
     let aaa = [];
@@ -39,7 +43,10 @@ const fetchVivisCOA = async (playerId) => {
     let ans = await CRUD_get_villages(playerId);
     return ans;
 };
-
+const fetchVivi = async (coo) => {
+    let ans = await CRUD_get_villages_coo(coo);
+    return ans;
+};
 async function CRUD_get_villages(playerId) {
     let cadran_0 = await CRUD_get_villages_in_one_cadran(0, playerId);
     let cadran_1 = await CRUD_get_villages_in_one_cadran(1, playerId);
@@ -55,6 +62,22 @@ async function CRUD_get_villages(playerId) {
     // console.log(ans)
     return ans;
 }
+async function CRUD_get_villages_coo(coo) {
+    let cadran_0 = await CRUD_get_villages_in_one_cadran_byCoo(0, coo);
+    let cadran_1 = await CRUD_get_villages_in_one_cadran_byCoo(1, coo);
+    let cadran_2 = await CRUD_get_villages_in_one_cadran_byCoo(2, coo);
+    let cadran_3 = await CRUD_get_villages_in_one_cadran_byCoo(3, coo);
+    let cadran_5 = await CRUD_get_villages_in_one_cadran_byCoo(5, coo);
+    // console.log(cadran_5)
+    let ans = cadran_5.concat(cadran_0, cadran_1, cadran_2, cadran_3);
+    // console.log(ans)
+    // ans = ans.sort((a, b) => a.role - b.role);
+    // console.log(ans)
+    ans = ans.filter((el, index) => ans.findIndex(e => e._id === el._id) === index);
+    // console.log(ans)
+    return ans;
+}
+
 
 async function CRUD_get_villages_in_one_cadran(cadran, playerId) {
     try {
@@ -74,7 +97,24 @@ async function CRUD_get_villages_in_one_cadran(cadran, playerId) {
         alert("An error occured while fetching user data qs45");
     }
 }
-
+async function CRUD_get_villages_in_one_cadran_byCoo(cadran, coo) {
+    try {
+        let aaa = []
+        const q = query(collection(db, 'villages_' + cadran), where("X", "==", coo[0].toString()), where("Y", "==", coo[1].toString()));
+        // const doc = await getDocs(q);
+        // const data = doc.docs[0].data();
+        console.log("lecture vivi du cadran " + cadran + " avec coo : " + coo[0] + "/" + coo[1]);
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // console.log(doc.id, " => ", doc.data());
+            aaa.push(doc.data());
+        });
+        return aaa;
+    } catch (err) {
+        console.error(err);
+        alert("An error occured while fetching user data qs23");
+    }
+}
 const saveVivi5 = async (vivis) => {
     // console.log("vivis", vivis)
     vivis.forEach(vivi => {
@@ -95,4 +135,4 @@ const saveVivi5 = async (vivis) => {
     })
 }
 
-export { fetchPlayersCOA, fetchVivisCOA, saveVivi5 }
+export { fetchPlayersCOA, fetchVivisCOA, fetchVivi, saveVivi5 }
