@@ -25,7 +25,7 @@ const fetchPlayersCOA = async (allyArr) => {
             const q = query(collection(db, "players"), where("Aid", "==", allyId.toString()));
             // const doc = await getDocs(q);
             // const data = doc.docs[0].data();
-            console.log("lecture tous les players de l'ally");
+            // console.log("lecture tous les players de l'ally");
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
                 // console.log(doc.id, " => ", doc.data());

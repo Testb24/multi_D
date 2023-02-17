@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AffichageTable(props) {
 
-    // console.log(props.data)
+    console.log(props.data)
 
     return (
         <div>

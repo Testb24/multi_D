@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './GestionVivi.css';
 import { fetchPlayersCOA, fetchVivisCOA, saveVivi5, fetchVivi } from './functions_gestionVivi';
+import { arrayRemove } from 'firebase/firestore';
 
 export default function GestionVivi() {
 
@@ -171,6 +172,59 @@ export default function GestionVivi() {
   // 2 germain
   // 1 romain
   // 5 natar
+
+  async function handleChangeTroops(vivi, value, field) {
+    console.log("handleCHangeTroops")
+    // console.log(vivi)
+    let temp = villages_5_data;
+
+    let i = temp.findIndex(el => el._id === vivi._id)
+    let k = vivis.findIndex(v => v._id === vivi._id)
+    let temp2 = vivis;
+    console.log(i)
+
+    if (i === -1) {
+      if (vivi.troops) {
+
+        vivi.troops[field] = value;
+      } else {
+        vivi.troops = [0, 0, 0];
+        vivi.troops[field] = value;
+      }
+      temp2[k] = vivi;
+      temp.push(vivi);
+
+    } else {
+
+      if (temp[i].troops) {
+
+        temp[i].troops[field] = value;
+      } else {
+        // console.log("WAY 4")
+        temp[i].troops = [0, 0, 0];
+        temp[i].troops[field] = value;
+      }
+      temp2[k] = temp[i];
+    }
+
+
+    // let k = vivis.findIndex(v => v._id === vivi._id)
+    // let temp2 = vivis;
+    // if (vivi.role && vivi.role.length > 0) {
+    //   temp2[k].role.push(newRole);
+    // } else {
+    //   temp2[k].role = [newRole];
+    // }
+    // if(i === )
+    // temp2[k] = temp[i]
+    console.log(temp2)
+    console.log([...temp])
+    setVivis(temp2);
+
+    setVivi5([...temp])
+  }
+
+
   return (
     <div>
       <h2>Gestion des vivis COA</h2>
@@ -263,11 +317,12 @@ export default function GestionVivi() {
             <th>Pop</th>
             <th>Coo</th>
             <th>Rôle</th>
-            <th>Troupes</th>
+            <th>Troupes (en k)</th>
           </tr>
         </thead>
         <tbody>
           {vivis && vivis.length > 0 && vivis.map((vivi, index) => {
+            console.log(vivi)
             return (
               <tr key={index}>
                 <th>{vivi.Vn}</th>
@@ -303,59 +358,65 @@ export default function GestionVivi() {
                   })}
                 </th>
                 <th>
-                  {/* ROMAIN */}
-                  {vivi.T === "1" &&
+                  {/* NATAR */}
+                  {vivi.T === "5" &&
+                    <p>Natar</p>
+
+                  }
+                  {vivi.T !== "5" &&
                     <table>
                       <thead>
                         <tr>
-                          <th>impé</th>
-                          <th>toris</th>
-                          <th>cae</th>
+                          {vivi.T === "1" &&
+                            <>
+                              <th>impé</th>
+                              <th>toris</th>
+                              <th>cae</th>
+                            </>
+                          }
+                          {vivi.T === "2" &&
+                            <>
+                              <th>gg</th>
+                              <th>h</th>
+                              <th>teu</th>
+                            </>
+                          }
+                          {vivi.T === "3" &&
+                            <>
+                              <th>ep</th>
+                              <th>touta</th>
+                              <th>hed</th>
+                            </>
+                          }
+                          <th>b</th>
+                          <th>cat</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th></th>
+                          {Array(5).fill(0).map((el, index) => {
+                            console.log(index)
+                            return (
+                              <th>
+                                <input
+                                  min={0}
+                                  type="number"
+                                  value={vivi.troops ? vivi.troops[index] : 0}
+                                  onChange={(e) => handleChangeTroops(vivi, e.target.value, index)}
+                                  className='browser-default GV_input_troops'
+                                  id='ptMin'
+                                ></input>
+                              </th>
+                            )
+                          })}
                         </tr>
                       </tbody>
                     </table>
+
                   }
                   {/* GERMAIN */}
-                  {vivi.T === "2" &&
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>gg</th>
-                          <th>h</th>
-                          <th>teu</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th></th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  }
-                  {/* GAULOIS */}
-                  {vivi.T === "3" &&
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>é</th>
-                          <th>touta</th>
-                          <th>hed</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th>1000</th>
-                          <th>0</th>
-                          <th>200</th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  }
+
+
                 </th>
               </tr>)
           })
@@ -363,7 +424,7 @@ export default function GestionVivi() {
         </tbody>
       </table>
 
-    </div>
+    </div >
 
   )
 }

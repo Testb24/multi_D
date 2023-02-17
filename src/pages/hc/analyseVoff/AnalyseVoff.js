@@ -117,6 +117,7 @@ export default function AnalyseVoff() {
     // }, [tempsTrajet_byPt_data])
 
     const [lvlPt, setLvlPt] = useState(["0", "20"]);
+
     function handleChangeLvlPt(e, i) {
         let temp = [].concat(lvlPt);
         if (e <= 20 && e >= 0 && ((i === 0 && parseInt(e) <= parseInt(lvlPt[1])) || (i === 1 && parseInt(e) >= parseInt(lvlPt[0])))) {
@@ -143,7 +144,7 @@ export default function AnalyseVoff() {
     }
 
     function addSpy() {
-        let attaque= attaquesByVoff[numero].attaques[0]
+        let attaque = attaquesByVoff[numero].attaques[0]
         // console.log(attaque)
         saveSpy(attaque)
     }
@@ -191,30 +192,35 @@ export default function AnalyseVoff() {
                         <th>Pop</th>
                         <th>Rôle</th>
                         <th>Pt (min/max)</th>
+                        {attaquesByVoff && attaquesByVoff[numero] &&
+                            <th colSpan={0}>{
+                                (attaquesByVoff[numero].village.T == 3 ? "Gau" : attaquesByVoff[numero].village.T == 2 ? "Ger" : "Rom")
+                                + " (en k)"}
+                            </th>}
                     </tr>
                 </thead>
 
                 <tbody>
-                    {attaquesByVoff && attaquesByVoff[numero] && attaquesByVoff[numero] &&
+                    {attaquesByVoff && attaquesByVoff[numero] &&
                         <tr>
                             <td>
                                 <a className='AVoff_link_table'
                                     href={"https://ts1.x1.europe.travian.com/position_details.php?x=" + attaquesByVoff[numero].village.X + "&y=" + attaquesByVoff[numero].village.Y}
-                                    target="_blank">
+                                    target="_blank" rel="noreferrer">
                                     {attaquesByVoff[numero].village.Vn + " (" + attaquesByVoff[numero].village.X + '/' + attaquesByVoff[numero].village.Y + ')'}
                                 </a>
                             </td>
                             <td>
                                 <a className='AVoff_link_table'
                                     href={"https://ts1.x1.europe.travian.com/profile/" + attaquesByVoff[numero].village.Uid}
-                                    target="_blank">
+                                    target="_blank" rel="noreferrer">
                                     {attaquesByVoff[numero].village.Un}
                                 </a>
                             </td>
                             <td>
                                 <a className='AVoff_link_table'
                                     href={"https://ts1.x1.europe.travian.com/alliance/" + attaquesByVoff[numero].village.Aid}
-                                    target="_blank">
+                                    target="_blank" rel="noreferrer">
                                     {attaquesByVoff[numero].village.An}
                                 </a>
                             </td>
@@ -226,6 +232,46 @@ export default function AnalyseVoff() {
                                         " - " +
                                         attaquesByVoff[numero].village.PTmax)
                                 }
+                            </td>
+                            {/* <td>{attaquesByVoff[numero].village.T}</td> */}
+                            <td>
+                                <table className='centered'>
+                                    <thead>
+                                        <tr>
+                                            {attaquesByVoff[numero].village.T === "1" &&
+                                                <>
+                                                    <th>impé</th>
+                                                    <th>toris</th>
+                                                    <th>cae</th>
+                                                </>
+                                            }
+                                            {attaquesByVoff[numero].village.T === "2" &&
+                                                <>
+                                                    <th>gg</th>
+                                                    <th>h</th>
+                                                    <th>teu</th>
+                                                </>
+                                            }
+                                            {attaquesByVoff[numero].village.T === "3" &&
+                                                <>
+                                                    <th>ep</th>
+                                                    <th>touta</th>
+                                                    <th>hed</th>
+                                                </>
+                                            }
+                                            <th>b</th>
+                                            <th>cat</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            {attaquesByVoff[numero].village.troops && attaquesByVoff[numero].village.troops.length > 0 && attaquesByVoff[numero].village.troops.map((t, index) => {
+                                                return (<td key={index}>{t}</td>)
+                                            })}
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </td>
                         </tr>
                     }
@@ -272,7 +318,7 @@ export default function AnalyseVoff() {
             </div>
 
 
-            <table className='centered AVoff_table_2'>
+            <table className='centered highlight AVoff_table_2'>
                 <thead>
                     <tr>
                         <th>Vivi attaqué</th>
@@ -288,6 +334,7 @@ export default function AnalyseVoff() {
                 <tbody>
                     {attaquesByVoff && attaquesByVoff[numero] && attaquesByVoff[numero].attaques.map(
                         (attaque, index) => {
+                            console.log(attaquesByVoff[numero])
                             // console.log(attaque)
                             return (
                                 <tr key={index}>
@@ -295,7 +342,7 @@ export default function AnalyseVoff() {
                                     <td>
                                         <a className='AVoff_link_table'
                                             href={"https://ts1.x1.europe.travian.com/position_details.php?x=" + attaque.def.X + "&y=" + attaque.def.Y}
-                                            target="_blank">
+                                            target="_blank" rel="noreferrer">
                                             {attaque.def.Vn + ' (' + attaque.def.X + "/" + attaque.def.Y + ')'}
                                         </a>
                                     </td>
