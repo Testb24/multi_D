@@ -103,7 +103,7 @@ async function CRUD_get_villages_in_one_cadran_byCoo(cadran, coo) {
         const q = query(collection(db, 'villages_' + cadran), where("X", "==", coo[0].toString()), where("Y", "==", coo[1].toString()));
         // const doc = await getDocs(q);
         // const data = doc.docs[0].data();
-        console.log("lecture vivi du cadran " + cadran + " avec coo : " + coo[0] + "/" + coo[1]);
+        // console.log("lecture vivi du cadran " + cadran + " avec coo : " + coo[0] + "/" + coo[1]);
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             // console.log(doc.id, " => ", doc.data());
@@ -118,6 +118,11 @@ async function CRUD_get_villages_in_one_cadran_byCoo(cadran, coo) {
 const saveVivi5 = async (vivis) => {
     // console.log("vivis", vivis)
     vivis.forEach(vivi => {
+        // console.log(vivi)
+        let temp = vivi.role;
+        temp = temp.filter((el, index) => index == temp.findIndex(e => e === el));
+        // console.log(temp)
+        vivi.role = temp;
         // console.log(vivi)
 
         let ref = doc(db, "villages_5", vivi._id)

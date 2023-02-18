@@ -322,7 +322,7 @@ export default function GestionVivi() {
         </thead>
         <tbody>
           {vivis && vivis.length > 0 && vivis.map((vivi, index) => {
-            console.log(vivi)
+            // console.log(vivi)
             return (
               <tr key={index}>
                 <th>{vivi.Vn}</th>
@@ -343,17 +343,17 @@ export default function GestionVivi() {
                   >
                     <option value="0" disabled>--Role--</option>
                     {/* <option value="1">Test name</option> */}
-                    {role && role.length > 0 && role.map((role, index) => {
+                    {role && role.length > 0 && role.map((role, index1) => {
                       return (
-                        <option key={index} value={role}>{role}</option>
+                        <option key={index1} value={role}>{role}</option>
                       )
                     })}
                   </select>
-                  {vivi && vivi.role && vivi.role.length > 0 && vivi.role.map((role, index) => {
+                  {vivi && vivi.role && vivi.role.length > 0 && vivi.role.map((role, index2) => {
                     return (
                       <div
                         onClick={(e) => handleDeleteRole(vivi, role)}
-                        key={index}>{role}</div>
+                        key={index2}>{role}</div>
                     )
                   })}
                 </th>
@@ -394,15 +394,15 @@ export default function GestionVivi() {
                       </thead>
                       <tbody>
                         <tr>
-                          {Array(5).fill(0).map((el, index) => {
-                            console.log(index)
+                          {Array(5).fill(0).map((el, index3) => {
+                            // console.log(index)
                             return (
-                              <th>
+                              <th key={index3}>
                                 <input
                                   min={0}
                                   type="number"
-                                  value={vivi.troops ? vivi.troops[index] : 0}
-                                  onChange={(e) => handleChangeTroops(vivi, e.target.value, index)}
+                                  value={vivi.troops ? vivi.troops[index3] : 0}
+                                  onChange={(e) => handleChangeTroops(vivi, e.target.value, index3)}
                                   className='browser-default GV_input_troops'
                                   id='ptMin'
                                 ></input>
