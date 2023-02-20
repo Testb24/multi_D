@@ -6,7 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(175, 175, 175);
-  background-color: rgb(244, 244, 244);
+  background-color: rgb(114, 123, 153);
+  /* background-color: rgb(244, 244, 244); */
 }
 
 code {
@@ -16,6 +17,7 @@ code {
 
 table {
   background-color: white;
+  background-color: rgb(155, 145, 145);
   /* color: white; */
 }
 

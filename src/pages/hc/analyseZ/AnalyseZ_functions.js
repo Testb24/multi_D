@@ -47,9 +47,9 @@ function Parse_Profil(str) {
 
     let re_att = /"attackerPoints":([\d]+),"def/;
     let re_def = /"defenderPoints":([\d]+)},"villa/;
-    let re_xp = /"xp":([\d]+),."equipment/;
+    let re_xp = /"xp":([\d]+),.*"equipment/;
 
-    let re_id = /{"data":.{"player":.{"id":([\d]+),"name":"(.[^"]*)","tribeId":/;
+    let re_id = /{"data":.?{"player":.?{"id":([\d]+),"name":"(.[^"]*)","tribeId":/;
     let id = str.match(re_id);
 
 
@@ -90,13 +90,16 @@ function Parse_Profil(str) {
             tier: horse[3]
         },
     }
-    console.log(z)
+    // console.log(z)
     let date = new Date;
     // console.log(date.toLocaleDateString()+ '_' + date.toLocaleTimeString())
     // console.log(date.toString())
-    let idZ = z.Uid + '__' + date.toLocaleDateString() + '__' + date.toLocaleTimeString();
+    // let idZ = z.Uid + '__' + date.toLocaleDateString() + '__' + date.toLocaleTimeString();
+    let idZ = z.Uid + '__' + date.getTime();
+    z.time = date.getTime();
+    z.id = idZ;
     idZ = idZ.replaceAll('/', ':')
-    console.log(idZ)
+    // console.log(idZ)
     let ref = doc(db, "z", idZ)
     CRUD_post(ref, z)
 
@@ -114,8 +117,25 @@ async function CRUD_post(ref, object) {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            M.toast({ html:object.type + " error", displayLength: 4000 });
+            M.toast({ html: object.type + " error", displayLength: 4000 });
         });
 }
 
-export { Parse_Profil, CRUD_post }
+async function CRUD_getAll(bank) {
+    // console.log("lecture all " + bank)
+    try {
+        let sortie = [];
+        const querySnapshot = await getDocs(collection(db, bank));
+        querySnapshot.forEach((doc) => {
+            sortie.push(doc.data());
+        });
+        return sortie;
+    } catch (err) {
+        console.error(err);
+        M.toast({ html: "An error occured while fetching " + bank, displayLength: 4000 });
+        return [];
+    }
+
+}
+
+export { Parse_Profil, CRUD_post, CRUD_getAll }

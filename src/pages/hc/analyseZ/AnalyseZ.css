@@ -1,0 +1,15 @@
+.analyseZ_alerte_lvl1{
+    font-size: 1.3em;
+    font-weight: 700;
+    color: rgb(170, 3, 3);
+}
+.analyseZ_alerte_lvl2{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: rgb(134, 74, 4);
+}
+.analyseZ_alerte_lvl3{
+    font-size: 1em;
+    font-weight: 500;
+    color: black;
+}
