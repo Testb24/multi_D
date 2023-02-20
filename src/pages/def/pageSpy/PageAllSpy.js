@@ -7,7 +7,7 @@ import { query, collection, getDocs, where, onSnapshot, doc } from "firebase/fir
 import { auth, db } from "../../../config/functionFB";
 import { onAuthStateChanged, getAuth } from "firebase/auth"
 import ModaleSpy from './ModaleSpy';
-
+import M from 'materialize-css';
 export default function PageAllSpy() {
 
   const [spys, setSpys] = useState();
@@ -64,7 +64,8 @@ export default function PageAllSpy() {
 
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      
+            M.toast({ html:"An error occured while fetching user data9", displayLength: 4000 });
     }
   };
 

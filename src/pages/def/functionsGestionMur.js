@@ -14,7 +14,7 @@ import {
     increment,
     updateDoc
 } from "firebase/firestore";
-
+import M from 'materialize-css';
 import { db, app, auth } from '../../config/firebaseConfig';
 
 async function CRUD_get(bank, id) {
@@ -48,13 +48,13 @@ async function CRUD_put(bank, object) {
     const ref = doc(db, bank, objectTemp.id);
     setDoc(ref, objectTemp)
         .then(docRef => {
-            alert(bank + " mis à jour avec succès")
+            M.toast({ html:bank + " mis à jour avec succès", displayLength: 4000 });
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            alert(bank + " mise à jour : ERROR")
+            M.toast({ html:bank + " mise à jour : ERROR", displayLength: 4000 });
         });
 }
 async function CRUD_delete(bank, id) {
@@ -62,13 +62,13 @@ async function CRUD_delete(bank, id) {
 
     db.collection(bank).doc(id).delete()
         .then(docRef => {
-            alert("mur supprimé avec succès")
+            M.toast({ html:"mur supprimé avec succès", displayLength: 4000 });
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            alert("suppression : ERROR")
+            M.toast({ html:"suppression : ERROR", displayLength: 4000 });
         });
 }
 async function CRUD_getAll(bank) {
@@ -87,7 +87,7 @@ async function CRUD_getAll(bank) {
         return sortie;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching " + bank);
+        M.toast({ html:"An error occured while fetching " + bank, displayLength: 4000 });
         return [];
     }
 
@@ -174,24 +174,11 @@ async function saveIncrement(user, mur, troupes, index) {
 
 
     const ref = doc(db, bank, mur.id);
-    // const ref = db.collection(bank).doc(mur.id);
     let field = user.pseudo + "__" + index;
     await updateDoc(ref, { [field]: increment(troupes) })
 
     const freshMur = await CRUD_get(bank, mur.id);
-    // setDoc(ref, objectTemp)
-    //     .then(docRef => {
-    //         alert(bank + " mis à jour avec succès")
-    //     })
-    //     .catch(err => {
-    //         console.error(err);
-    //         console.log(err.message);
-    //         console.log(err);
-    //         alert(bank + " mise à jour : ERROR")
-    //     });
 
-
-    // CRUD_put(bank, { ...freshMur, timestamp: serverTimestamp(), assist: allTroops, remplissage: get_remplissage_from_mur(allTroops, freshMur.troupesObj) })
     return freshMur;
 }
 

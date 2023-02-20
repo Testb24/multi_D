@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './GestionVivi.css';
 import { fetchPlayersCOA, fetchVivisCOA, saveVivi5, fetchVivi } from './functions_gestionVivi';
 import { arrayRemove } from 'firebase/firestore';
+import img_gaul from "../../../assets/troops/gaul.png";
+import img_roman from "../../../assets/troops/roman.png";
+import img_teuton from "../../../assets/troops/teuton.png";
 
 export default function GestionVivi() {
 
@@ -309,7 +312,7 @@ export default function GestionVivi() {
       </div>}
 
 
-      <table>
+      <table className='striped'>
         <thead>
           <tr>
             {/* <th>Compte ig</th> */}
@@ -367,29 +370,189 @@ export default function GestionVivi() {
                     <table>
                       <thead>
                         <tr>
-                          {vivi.T === "1" &&
+                          {vivi.T === "3" &&
                             <>
-                              <th>impé</th>
-                              <th>toris</th>
-                              <th>cae</th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_gaul + ")",
+                                    backgroundPosition: "-19px 0",
+                                    // border:"1px solid white"
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_gaul + ")",
+                                    backgroundPosition: "-57px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_gaul + ")",
+                                    backgroundPosition: "-95px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_gaul + ")",
+                                    backgroundPosition: "-114px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_gaul + ")",
+                                    backgroundPosition: "-133px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+
                             </>
                           }
                           {vivi.T === "2" &&
                             <>
-                              <th>gg</th>
-                              <th>h</th>
-                              <th>teu</th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_teuton + ")",
+                                    backgroundPosition: "0px 0",
+                                    // border:"1px solid white"
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_teuton + ")",
+                                    backgroundPosition: "-37px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_teuton + ")",
+                                    backgroundPosition: "-95px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_teuton + ")",
+                                    backgroundPosition: "-114px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_teuton + ")",
+                                    backgroundPosition: "-133px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+
                             </>
                           }
-                          {vivi.T === "3" &&
+                          {vivi.T === "1" &&
                             <>
-                              <th>ep</th>
-                              <th>touta</th>
-                              <th>hed</th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_roman + ")",
+                                    backgroundPosition: "-38px 0",
+                                    // border:"1px solid white"
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_roman + ")",
+                                    backgroundPosition: "-76px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_roman + ")",
+                                    backgroundPosition: "-95px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_roman + ")",
+                                    backgroundPosition: "-114px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+                              <th >
+                                <div
+                                  style={{
+                                    width: "16px",
+                                    height: "16px",
+                                    backgroundImage: "url(" + img_roman + ")",
+                                    backgroundPosition: "-133px 0",
+                                    margin: "auto"
+                                  }}
+                                />
+                              </th>
+
                             </>
                           }
-                          <th>b</th>
-                          <th>cat</th>
                         </tr>
                       </thead>
                       <tbody>

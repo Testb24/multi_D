@@ -9,7 +9,7 @@ import {
     doc,
     // serverTimestamp
 } from "firebase/firestore";
-
+import M from 'materialize-css';
 import {
     db,
     // app, 
@@ -33,7 +33,7 @@ const fetchPlayersCOA = async (allyArr) => {
             });
         } catch (err) {
             console.error(err);
-            alert("An error occured while fetching user data qs45");
+            M.toast({ html:"An error occured while fetching user data qs45", displayLength: 4000 });
         }
         // })
     };
@@ -94,7 +94,7 @@ async function CRUD_get_villages_in_one_cadran(cadran, playerId) {
         return aaa;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching user data qs45");
+        M.toast({ html:"An error occured while fetching user data qs45", displayLength: 4000 });
     }
 }
 async function CRUD_get_villages_in_one_cadran_byCoo(cadran, coo) {
@@ -112,7 +112,7 @@ async function CRUD_get_villages_in_one_cadran_byCoo(cadran, coo) {
         return aaa;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching user data qs23");
+        M.toast({ html:"An error occured while fetching user data qs23", displayLength: 4000 });
     }
 }
 const saveVivi5 = async (vivis) => {
@@ -128,14 +128,14 @@ const saveVivi5 = async (vivis) => {
         let ref = doc(db, "villages_5", vivi._id)
         setDoc(ref, vivi)
             .then(docRef => {
-                alert("nouveaux roles enregistrés")
+                M.toast({ html:"nouveaux roles/troupes enregistrés", displayLength: 4000 });
                 console.log("nouveaux roles enregistrés")
             })
             .catch(err => {
                 console.error(err);
                 console.log(err.message);
                 console.log(err);
-                alert(" error")
+                M.toast({ html:"erreur18", displayLength: 4000 });
             });
     })
 }

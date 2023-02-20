@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../config/functionFB";
 import { query, collection, getDocs, where } from "firebase/firestore";
-
+import M from 'materialize-css';
 import { onAuthStateChanged, sendEmailVerification, getAuth } from "firebase/auth"
 
 export default function Profil() {
@@ -22,7 +22,8 @@ export default function Profil() {
             setData(data);
         } catch (err) {
             console.error(err);
-            alert("An error occured while fetching user data");
+            
+            M.toast({ html:"An error occured while fetching user data11", displayLength: 4000 });
         }
     };
 
@@ -56,7 +57,8 @@ export default function Profil() {
             .then(() => {
                 // Email verification sent!
                 // ...
-                alert("vérif envoyée")
+                console.log("vérif envoyée")
+                M.toast({ html:"vérif envoyée", displayLength: 4000 });
             });
     }
 

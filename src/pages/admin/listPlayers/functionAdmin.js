@@ -10,7 +10,7 @@ import {
     serverTimestamp,
     updateDoc,
 } from "firebase/firestore";
-
+import M from 'materialize-css';
 import { db, app, auth } from '../../../config/firebaseConfig';
 
 
@@ -30,7 +30,8 @@ const fetchPlayersDataDB = async () => {
         return aaa;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching user data");
+        
+            M.toast({ html:"An error occured while fetching user data6", displayLength: 4000 });
     }
 };
 
@@ -57,7 +58,8 @@ const updateUserRole = async (uid, role, newRole, add) => {
             });
         } catch (err) {
             console.error(err);
-            alert(err.message);
+            console.log(err.message);
+            M.toast({ html:"erreur", displayLength: 4000 });
         }
     } else {
         try {
@@ -69,7 +71,8 @@ const updateUserRole = async (uid, role, newRole, add) => {
             });
         } catch (err) {
             console.error(err);
-            alert(err.message);
+            console.log(err.message);
+            M.toast({ html:"erreur", displayLength: 4000 });
         }
     }
 

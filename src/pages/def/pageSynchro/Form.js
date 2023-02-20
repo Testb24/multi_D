@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { updateTroopsMur } from '../functionsGestionMur';
-
+import M from 'materialize-css';
 export default function Form({ mur, user, setMur }) {
   // console.log(mur)
   // console.log(user)
@@ -35,7 +35,8 @@ export default function Form({ mur, user, setMur }) {
       const newMur = await updateTroopsMur(user, myTroops, mur);
       setMur(newMur);
     } else {
-      alert('aucune troupe en entrée')
+      console.log('aucune troupe en entrée')
+      M.toast({ html:'aucune troupe en entrée', displayLength: 4000 });
     }
 
   }

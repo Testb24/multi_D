@@ -9,7 +9,7 @@ import {
     doc,
     serverTimestamp
 } from "firebase/firestore";
-
+import M from 'materialize-css';
 import { db, app, auth } from '../../config/firebaseConfig';
 
 function saveAttacks(attaques, cleanTime) {
@@ -119,7 +119,8 @@ const fetchAttacksDataDB = async () => {
         return aaa;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching user data");
+        
+            M.toast({ html:"An error occured while fetching user data10", displayLength: 4000 });
     }
 };
 

@@ -6,7 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { query, collection, getDocs, where, onSnapshot, doc } from "firebase/firestore";
 import { auth, db } from "../../../config/functionFB";
 import { onAuthStateChanged, getAuth } from "firebase/auth"
-
+import M from 'materialize-css';
 import "../PageAll.css"
 
 export default function PageAllMur() {
@@ -76,7 +76,8 @@ export default function PageAllMur() {
 
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      
+            M.toast({ html:"An error occured while fetching user data7", displayLength: 4000 });
     }
   };
 

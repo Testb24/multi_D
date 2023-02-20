@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../config/functionFB";
 import { query, collection, getDocs, where } from "firebase/firestore";
-
+import M from 'materialize-css';
 const SignedInLinks = () => {
 
   const [userData, setUserData] = useState(false)
@@ -35,7 +35,8 @@ const SignedInLinks = () => {
   //     setData(data);
   //   } catch (err) {
   //     console.error(err);
-  //     alert("An error occured while fetching user data");
+  //     
+  // M.toast({ html: "An error occured while fetching user data3", displayLength: 4000 });
   //   }
   // };
 
@@ -49,7 +50,9 @@ const SignedInLinks = () => {
       setData(data2);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      // 
+      M.toast({ html: "An error occured while fetching user data4", displayLength: 4000 });
+      M.toast({ html: "An error occured while fetching user data5", displayLength: 4000 });
     }
   };
 
@@ -71,9 +74,11 @@ const SignedInLinks = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
       setUserData(false)
-      // alert("déconnexion réussie")
+      console.log("déconnexion réussie")
+      M.toast({ html: "déconnexion réussie", displayLength: 4000 });
     }).catch((error) => {
-      alert("erreur")
+      console.log(error)
+      M.toast({ html: "erreur", displayLength: 4000 });
     });
   }
 
@@ -129,6 +134,8 @@ const SignedInLinks = () => {
             <li className="tab"><NavLink to='/hc/voff'>{"Analyse voff"}</NavLink></li>
             <li className="tab"><NavLink to='/hc/wall'>{"Validation mur, spy et synchros"}</NavLink></li>
             <li className="tab"><NavLink to='/hc/vivis'>{"Gestion vivis"}</NavLink></li>
+            <li className="tab"><NavLink to='/hc/vdef'>{"Analyse vdef"}</NavLink></li>
+            <li className="tab"><NavLink to='/hc/z'>{"Analyse Z"}</NavLink></li>
           </ul>}
 
         {tab === "admin" && data.role && data.role.includes("admin") &&

@@ -26,7 +26,7 @@ export default function ProtectedRoute(props) {
             setData(data);
         } catch (err) {
             console.error(err);
-            alert("An error occured while fetching user data");
+            M.toast({ html:"An error occured while fetching user data1", displayLength: 4000 });
         }
     };
 

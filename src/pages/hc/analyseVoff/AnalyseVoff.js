@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './AnalyseVoff.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faBinoculars, faShield, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import img_gaul from "../../../assets/troops/gaul.png";
+import img_roman from "../../../assets/troops/roman.png";
+import img_teuton from "../../../assets/troops/teuton.png";
 import {
     CRUD_getAll, CRUD_get,
     expliciteSecondes,
@@ -102,7 +105,7 @@ export default function AnalyseVoff() {
 
             let min = "0";
             let max = "20";
-            console.log()
+            // console.log()
             if (attaquesByVoff[numero].village.PTmin)
                 min = attaquesByVoff[numero].village.PTmin
             if (attaquesByVoff[numero].village.PTmax)
@@ -118,30 +121,10 @@ export default function AnalyseVoff() {
 
     const [lvlPt, setLvlPt] = useState(["0", "20"]);
 
-    function handleChangeLvlPt(e, i) {
-        let temp = [].concat(lvlPt);
-        if (e <= 20 && e >= 0 && ((i === 0 && parseInt(e) <= parseInt(lvlPt[1])) || (i === 1 && parseInt(e) >= parseInt(lvlPt[0])))) {
-            temp[i] = e;
-        }
-        setLvlPt(temp);
-    }
-
     // useEffect(() => {
     //     console.log(lvlPt)
     // }, [lvlPt])
     // const [villages_5_data, setVivi5] = useState([]);
-
-    function handleSave() {
-        console.log(attaquesByVoff)
-        console.log("saves lvl pt");
-        let viviToSave = { ...attaquesByVoff[numero].village, PTmin: lvlPt[0], PTmax: lvlPt[1] }
-        saveVivi5([viviToSave]);
-
-        let temp = [].concat(attaquesByVoff);
-        temp[numero].village.PTmin = lvlPt[0]
-        temp[numero].village.PTmax = lvlPt[1]
-        setAttaquesByVoff(temp);
-    }
 
     function addSpy() {
         let attaque = attaquesByVoff[numero].attaques[0]
@@ -192,11 +175,195 @@ export default function AnalyseVoff() {
                         <th>Pop</th>
                         <th>Rôle</th>
                         <th>Pt (min/max)</th>
-                        {attaquesByVoff && attaquesByVoff[numero] &&
+                        {/* {attaquesByVoff && attaquesByVoff[numero] &&
                             <th colSpan={0}>{
                                 (attaquesByVoff[numero].village.T == 3 ? "Gau" : attaquesByVoff[numero].village.T == 2 ? "Ger" : "Rom")
                                 + " (en k)"}
-                            </th>}
+                            </th>} */}
+                        {attaquesByVoff && attaquesByVoff[numero] && attaquesByVoff[numero].village && attaquesByVoff[numero].village.T === "3" &&
+                            <>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_gaul + ")",
+                                            backgroundPosition: "-19px 0",
+                                            // border:"1px solid white"
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_gaul + ")",
+                                            backgroundPosition: "-57px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_gaul + ")",
+                                            backgroundPosition: "-95px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_gaul + ")",
+                                            backgroundPosition: "-114px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_gaul + ")",
+                                            backgroundPosition: "-133px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+
+                            </>
+                        }
+                        {attaquesByVoff && attaquesByVoff[numero] && attaquesByVoff[numero].village && attaquesByVoff[numero].village.T === "2" &&
+                            <>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_teuton + ")",
+                                            backgroundPosition: "0px 0",
+                                            // border:"1px solid white"
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_teuton + ")",
+                                            backgroundPosition: "-37px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_teuton + ")",
+                                            backgroundPosition: "-95px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_teuton + ")",
+                                            backgroundPosition: "-114px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_teuton + ")",
+                                            backgroundPosition: "-133px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+
+                            </>
+                        }
+                        {attaquesByVoff && attaquesByVoff[numero] && attaquesByVoff[numero].village && attaquesByVoff[numero].village.T === "1" &&
+                            <>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_roman + ")",
+                                            backgroundPosition: "-38px 0",
+                                            // border:"1px solid white"
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_roman + ")",
+                                            backgroundPosition: "-76px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_roman + ")",
+                                            backgroundPosition: "-95px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_roman + ")",
+                                            backgroundPosition: "-114px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+                                <th className='AVdef_table_troops'>
+                                    <div
+                                        style={{
+                                            width: "16px",
+                                            height: "16px",
+                                            backgroundImage: "url(" + img_roman + ")",
+                                            backgroundPosition: "-133px 0",
+                                            margin: "auto"
+                                        }}
+                                    />
+                                </th>
+
+                            </>
+                        }
+
                     </tr>
                 </thead>
 
@@ -234,45 +401,16 @@ export default function AnalyseVoff() {
                                 }
                             </td>
                             {/* <td>{attaquesByVoff[numero].village.T}</td> */}
-                            <td>
-                                <table className='centered'>
-                                    <thead>
-                                        <tr>
-                                            {attaquesByVoff[numero].village.T === "1" &&
-                                                <>
-                                                    <th>impé</th>
-                                                    <th>toris</th>
-                                                    <th>cae</th>
-                                                </>
-                                            }
-                                            {attaquesByVoff[numero].village.T === "2" &&
-                                                <>
-                                                    <th>gg</th>
-                                                    <th>h</th>
-                                                    <th>teu</th>
-                                                </>
-                                            }
-                                            {attaquesByVoff[numero].village.T === "3" &&
-                                                <>
-                                                    <th>ep</th>
-                                                    <th>touta</th>
-                                                    <th>hed</th>
-                                                </>
-                                            }
-                                            <th>b</th>
-                                            <th>cat</th>
-                                        </tr>
-                                    </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            {attaquesByVoff[numero].village.troops && attaquesByVoff[numero].village.troops.length > 0 && attaquesByVoff[numero].village.troops.map((t, index) => {
-                                                return (<td key={index}>{t}</td>)
-                                            })}
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
+                            {attaquesByVoff[numero].village.troops && attaquesByVoff[numero].village.troops.length > 0 && attaquesByVoff[numero].village.troops.map((t, index) => {
+                                if (t != 0) {
+                                    return (<td key={index}>{t*1000}</td>)
+                                } else {
+                                    return (<td key={index}>{" "}</td>)
+                                }
+
+                            })}
+
                         </tr>
                     }
                 </tbody>
@@ -334,7 +472,7 @@ export default function AnalyseVoff() {
                 <tbody>
                     {attaquesByVoff && attaquesByVoff[numero] && attaquesByVoff[numero].attaques.map(
                         (attaque, index) => {
-                            console.log(attaquesByVoff[numero])
+                            // console.log(attaquesByVoff[numero])
                             // console.log(attaque)
                             return (
                                 <tr key={index}>

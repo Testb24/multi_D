@@ -38,6 +38,7 @@ async function CRUD_getAll(bank) {
         return sortie;
     } catch (err) {
         console.error(err);
+        console.log("An error occured while fetching " + bank);
         M.toast({ html:"An error occured while fetching " + bank, displayLength: 4000 });
         return [];
     }
@@ -278,13 +279,60 @@ function saveSpy(attaque) {
         id: attaque.id,
     })
         .then(docRef => {
+            console.log("spy enregistré")
             M.toast({ html:"spy enregistré", displayLength: 4000 });
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
+            console.log("spy error")
             M.toast({ html:"spy error", displayLength: 4000 });
         });
 }
-export { saveSpy,CRUD_getAll, CRUD_get, expliciteSecondes, distanceDeuxVivis, distanceDeuxPoints, allertMessage, tempsTrajet_byPt, saveVivi5, calcul_tps_trajet }
+
+function saveMur(village) {
+console.log(village)
+    let ref = doc(db, "mur", village.attaques[0].def.X + '_' + village.attaques[0].def.Y)
+
+    const tempOff = []
+    let firstImpact = village.attaques[0].time.impact;
+    village.attaques.forEach(attaque => {
+        tempOff.push(attaque.off)
+        firstImpact = Math.min(firstImpact, attaque.time.impact)
+    })
+
+    const murToPost = {
+        firstImpact: firstImpact,
+        remplissage: 0,
+        assist: JSON.stringify([]),
+        valide: false,
+
+        troupesObj: 0,
+        def: village.attaques[0].def,
+        off: tempOff,
+        type: "mur",
+        timestamp: serverTimestamp(),
+        id: village.attaques[0].def.X + '_' + village.attaques[0].def.Y,
+    };
+
+    CRUD_post(ref, murToPost);
+}
+
+async function CRUD_post(ref, object) {
+
+    setDoc(ref, object)
+        .then(docRef => {
+            console.log(object.type + " enregistré")
+            M.toast({ html:object.type + " enregistré", displayLength: 4000 });
+            console.log(object.type + " enregistré")
+        })
+        .catch(err => {
+            console.error(err);
+            console.log(err.message);
+            console.log(err);
+            console.log(object.type + " error")
+            M.toast({ html:object.type + " error", displayLength: 4000 });
+        });
+}
+export { saveMur, saveSpy, CRUD_getAll, CRUD_get, expliciteSecondes, distanceDeuxVivis, distanceDeuxPoints, allertMessage, tempsTrajet_byPt, saveVivi5, calcul_tps_trajet }

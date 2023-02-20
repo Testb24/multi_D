@@ -9,21 +9,23 @@ import {
     doc,
     serverTimestamp
 } from "firebase/firestore";
-
+import M from 'materialize-css';
 import { db, app, auth } from '../../../config/firebaseConfig';
 
 async function CRUD_post(ref, object) {
 
     setDoc(ref, object)
         .then(docRef => {
-            alert(object.type + " enregistré")
+            console.log(object.type + " enregistré")
+            M.toast({ html:object.type + " enregistré", displayLength: 4000 });
             console.log(object.type + " enregistré")
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            alert(object.type + " error")
+            console.log(object.type + " error")
+            M.toast({ html:object.type + " error", displayLength: 4000 });
         });
 }
 
@@ -94,13 +96,15 @@ function saveSpy(attaque) {
         id: attaque.id,
     })
         .then(docRef => {
-            alert("spy enregistré")
+            console.log("spy enregistré")
+            M.toast({ html:"spy enregistré", displayLength: 4000 });
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            alert("spy error")
+            console.log("spy error")
+            M.toast({ html:"spy error", displayLength: 4000 });
         });
 }
 
@@ -128,7 +132,8 @@ async function CRUD_getAll(bank) {
         return sortie;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching " + bank);
+        console.log("An error occured while fetching " + bank);
+        M.toast({ html:"An error occured while fetching " + bank, displayLength: 4000 });
         return [];
     }
 

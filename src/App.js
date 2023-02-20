@@ -20,6 +20,8 @@ import PageAllSpy from './pages/def/pageSpy/PageAllSpy';
 import GestionVivi from './pages/hc/gestionVivi/GestionVivi';
 import AnalyseTrajets from './pages/hc/analyseTrajets/AnalyseTrajets';
 import AnalyseVoff from './pages/hc/analyseVoff/AnalyseVoff';
+import AnalyseVdef from './pages/hc/analyseVdef/AnalyseVdef';
+import AnalyseZ from './pages/hc/analyseZ/AnalyseZ';
 
 function App() {
   return (
@@ -67,6 +69,16 @@ function App() {
         <Route exact path='/hc/voff' element={
           <ProtectedRoute2 role="hc">
             <AnalyseVoff />
+          </ProtectedRoute2>
+        } />
+        <Route exact path='/hc/vdef' element={
+          <ProtectedRoute2 role="hc">
+            <AnalyseVdef />
+          </ProtectedRoute2>
+        } />
+        <Route exact path='/hc/z' element={
+          <ProtectedRoute2 role="hc">
+            <AnalyseZ />
           </ProtectedRoute2>
         } />
 

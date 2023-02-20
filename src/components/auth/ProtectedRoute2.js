@@ -7,6 +7,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { auth, db, logout } from "../../config/functionFB";
 import { query, collection, getDocs, where } from "firebase/firestore";
 
+import M from 'materialize-css';
 // import { onAuthStateChanged, sendEmailVerification, getAuth } from "firebase/auth"
 // import ListPlayers from '../admin/ListPlayers';
 
@@ -26,7 +27,7 @@ export default function ProtectedRoute2(props) {
             setData(data);
         } catch (err) {
             console.error(err);
-            alert("An error occured while fetching user data");
+            M.toast({ html:"An error occured while fetching user data2", displayLength: 4000 });
         }
     };
 

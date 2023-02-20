@@ -10,7 +10,7 @@ import {
     serverTimestamp,
     getDoc
 } from "firebase/firestore";
-
+import M from 'materialize-css';
 import { db, app, auth } from '../../../config/firebaseConfig';
 
 
@@ -38,7 +38,7 @@ async function CRUD_getAll(bank) {
         return sortie;
     } catch (err) {
         console.error(err);
-        alert("An error occured while fetching " + bank);
+        M.toast({ html: "An error occured while fetching " + bank, displayLength: 4000 });
         return [];
     }
 
@@ -189,14 +189,14 @@ const saveVivi5 = async (vivis) => {
         let ref = doc(db, "villages_5", vivi._id)
         setDoc(ref, vivi)
             .then(docRef => {
-                alert("nouveaux lvl pt enregistrés")
+                M.toast({ html: "nouveaux lvl pt enregistrés", displayLength: 4000 });
                 console.log("nouveaux lvl pt enregistrés")
             })
             .catch(err => {
                 console.error(err);
                 console.log(err.message);
                 console.log(err);
-                alert(" error")
+                M.toast({ html: "error", displayLength: 4000 });
             });
     })
 }
@@ -209,13 +209,13 @@ async function CRUD_put(bank, object) {
     const ref = doc(db, bank, objectTemp.id);
     setDoc(ref, objectTemp)
         .then(docRef => {
-            alert(bank + " mis à jour avec succès")
+            M.toast({ html: bank + " mis à jour avec succès", displayLength: 4000 });
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            alert(bank + " mise à jour : ERROR")
+            M.toast({ html: bank + " mise à jour : ERROR", displayLength: 4000 });
         });
 }
 
