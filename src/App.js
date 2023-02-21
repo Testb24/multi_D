@@ -5,7 +5,7 @@ import SignUp from './components/auth/SignUp';
 import Dashboard from './components/dashboard/Dashboard';
 import Profil from './components/profil/Profil';
 import Reset from './components/auth/Reset';
-import AddAttaque from './pages/attaques/AddAttaque';
+import AddAttaque from './pages/attaques/analyseAtt/AddAttaque';
 import AttaqueList from './pages/attaques/AttaqueList';
 import ListPlayers from './pages/admin/listPlayers/ListPlayers';
 // import ProtectedRoute from './components/auth/ProtectedRoute';

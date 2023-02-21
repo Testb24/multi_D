@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchAttacksDataDB } from './functionAttaque';
+import { fetchAttacksDataDB } from './analyseAtt/functionAttaque';
 
 function AttaqueList() {
 

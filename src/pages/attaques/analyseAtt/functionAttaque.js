@@ -10,7 +10,7 @@ import {
     serverTimestamp
 } from "firebase/firestore";
 import M from 'materialize-css';
-import { db, app, auth } from '../../config/firebaseConfig';
+import { db, app, auth } from '../../../config/firebaseConfig';
 
 function saveAttacks(attaques, cleanTime) {
 

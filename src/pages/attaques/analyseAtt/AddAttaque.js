@@ -63,13 +63,17 @@ function AddAttaque() {
 
       {attaques && attaques.length === 0 && <form className="white" onSubmit={handleSubmit}>
         <h5 className="grey-text text-darken-3">Ajouter de nouvelles attaques</h5>
-        <div className="input-field">
+        {/* <div className="input-field">
           <button className="btn pink lighten-1">extraire les attaques</button>
-        </div>
+        </div> */}
         <div className="input-field">
           {/* <textarea id="pr" className="materialize-textarea" onChange={handleChange} value={str}></textarea> */}
-          <input type="text" id="pr" className="materialize-textarea" onChange={handleChange} value={str} />
-          <label htmlFor="pr">Place de rassemblement</label>
+          <input type="text" id="pr" 
+          // className="materialize-textarea"
+          placeholder='place de rassemblement'
+          className="browser-default"
+           onChange={handleChange} value={str} />
+          {/* <label htmlFor="pr">Place de rassemblement</label> */}
         </div>
         <div className="input-field">
           <button className="btn pink lighten-1">extraire les attaques</button>

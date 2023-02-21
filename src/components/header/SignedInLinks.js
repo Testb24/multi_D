@@ -106,7 +106,7 @@ const SignedInLinks = () => {
           {data.role && data.role.includes("admin") && <li><NavLink to='/admin'>Admin</NavLink></li>}
           {data.role && data.role.includes("hc") && <li><NavLink to='/hc'>HC</NavLink></li>}
           <li><NavLink to='/attaques' >Attaques</NavLink></li>
-          <li><NavLink to='/defence' >Mur, Synchro & Spy</NavLink></li>
+          <li><NavLink to='/defence' >{"Mur, Synchro & Spy"}</NavLink></li>
           <li><NavLink to='/' onClick={disconnect}>Déconnexion</NavLink></li>
           <li><NavLink to='/profil' className="btn pink lighten-1">{data.pseudo}</NavLink></li>
         </ul>
@@ -118,6 +118,7 @@ const SignedInLinks = () => {
           <ul className="tabs tabs-transparent">
             <li className="tab"><NavLink to='/attaques/add'>Nouvelle Attaque</NavLink></li>
             <li className="tab"><NavLink to='/attaques/list'>Liste des Attaques</NavLink></li>
+            <li className="tab"><NavLink to='/hc/z'>{"Analyse Z"}</NavLink></li>
           </ul>}
 
         {tab === "defence" &&
@@ -135,7 +136,6 @@ const SignedInLinks = () => {
             <li className="tab"><NavLink to='/hc/wall'>{"Validation mur, spy et synchros"}</NavLink></li>
             <li className="tab"><NavLink to='/hc/vivis'>{"Gestion vivis"}</NavLink></li>
             <li className="tab"><NavLink to='/hc/vdef'>{"Analyse vdef"}</NavLink></li>
-            <li className="tab"><NavLink to='/hc/z'>{"Analyse Z"}</NavLink></li>
           </ul>}
 
         {tab === "admin" && data.role && data.role.includes("admin") &&
