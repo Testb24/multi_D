@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Parse_Profil, CRUD_getAll } from './AnalyseZ_functions.js'
+import { Parse_Profil, CRUD_getAll, CRUD_get } from './AnalyseZ_functions.js'
 import M from 'materialize-css';
 import "./AnalyseZ.css"
 
@@ -48,17 +48,18 @@ export default function AnalyseZ() {
     PlayerOff = PlayerOff.filter((el, i) => i === PlayerOff.findIndex(e => e.Uid == el.Uid))
     // console.log(PlayerOff)
 
-    temp = await CRUD_getAll("z");
+    // temp = await CRUD_getAll("z");
+    temp = await CRUD_get("z_record", "1");
     // console.log(tempTime)
     PlayerOff.map((pl, i) => {
 
-      let tempTime = [];
-      temp.filter(el => el.Uid === pl.Uid).map(el => tempTime.push(el.time));
+      let tempTime = temp.dataTime.find(el => el.Uid === pl.Uid);
+      // temp.filter(el => el.Uid === pl.Uid).map(el => tempTime.push(el.time));
       // console.log(tempTime)
       PlayerOff[i] = {
         player: pl,
-        screen: temp.filter(el => el.Uid === pl.Uid),
-        last: tempTime.length > 0 ? Math.max(...tempTime) : 0
+        // screen: temp.filter(el => el.Uid === pl.Uid),
+        last: tempTime === undefined ? 0 : tempTime.time
       }
 
     })
@@ -73,7 +74,7 @@ export default function AnalyseZ() {
   return (
     <>
       {<form className="white container" onSubmit={handleSubmit}>
-        <h5 className="grey-text text-darken-3">Analyser un z</h5>
+        <h5 className="grey-text text-darken-3">{"Enregistrer un profil joueur (points et héros)"}</h5>
         {/* <div className="input-field">
             <button className="btn pink lighten-1">Extraire les infos</button>
           </div> */}
@@ -83,12 +84,12 @@ export default function AnalyseZ() {
           {/* <label htmlFor="pr">Page de profil</label> */}
         </div>
         <div className="input-field">
-          <button className="btn pink lighten-1">Extraire les infos</button>
+          <button className="btn pink lighten-1">Extraire les infos et enregistrer</button>
         </div>
       </form>}
 
       <div className='container'>
-        <h5 className="grey-text text-darken-3">Mettre à jour la BDD des z ennemis</h5>
+        <h5 className="grey-text text-darken-3">Mettre à jour la BDD des profils ennemis</h5>
         <button
           onClick={() => { setDlData(true) }}
           className='btn'>
@@ -131,7 +132,12 @@ export default function AnalyseZ() {
                 >{playerOff.last ? new Date(playerOff.last).toLocaleString() : "<!>"}</th>
                 {/* <th>{(new Date() - playerOff.last < 3600 * 1000 ? "ok" : "f")} </th> */}
                 {/* <th>{(new Date() - playerOff.last) / 3600 / 1000 < 0.5} </th> */}
-                {playerOff.last !== 0 && <th>{Math.floor((new Date() - playerOff.last) / 3600000) % 3600 + 'h ' + Math.floor((new Date() - playerOff.last) / 60000) % 60 + 'min ' + Math.floor((new Date() - playerOff.last) / 1000) % 60 + 's '} </th>}
+                {playerOff.last !== 0 &&
+                  <th>{
+                    Math.floor((new Date() - playerOff.last) / 3600000) % 3600 + 'h ' +
+                    Math.floor((new Date() - playerOff.last) / 60000) % 60 + 'min ' +
+                    Math.floor((new Date() - playerOff.last) / 1000) % 60 + 's '
+                  }</th>}
               </tr>
             )
           })}

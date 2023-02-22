@@ -14,7 +14,6 @@ import {
     saveSpy,
     saveMur
 } from './functions_analyseVdef';
-import img1 from "../../../assets/troops/gaul.png";
 // import TestChart from './TestChart';
 
 export default function AnalyseVdef() {

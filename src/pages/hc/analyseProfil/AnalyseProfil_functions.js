@@ -54,41 +54,40 @@ function Parse_Profil(str) {
     let id = str.match(re_id);
 
 
-
     let z = {
         ptOff: str.match(re_att)[1],
         ptDef: str.match(re_def)[1],
         xpZ: str.match(re_xp)[1],
         Uid: id[1],
         Un: id[2],
-        helmet: {
+        casque: {
             id: casque[1],
-            description: cleanString(casque[2]),
+            description: casque[2],
             tier: casque[3]
         },
-        leftHand: {
+        re_leftHand: {
             id: leftHand[1],
-            description: cleanString(leftHand[2]),
+            description: leftHand[2],
             tier: leftHand[3]
         },
         rightHand: {
             id: rightHand[1],
-            description: cleanString(rightHand[2]),
+            description: rightHand[2],
             tier: rightHand[3]
         },
         body: {
             id: body[1],
-            description: cleanString(body[2]),
+            description: body[2],
             tier: body[3]
         },
         shoes: {
             id: shoes[1],
-            description: cleanString(shoes[2]),
+            description: shoes[2],
             tier: shoes[3]
         },
         horse: {
             id: horse[1],
-            description: cleanString(horse[2]),
+            description: horse[2],
             tier: horse[3]
         },
     }
@@ -108,16 +107,6 @@ function Parse_Profil(str) {
     return z;
 }
 
-function cleanString(str) {
-
-    // let a = "Armure d&#39;\u00e9caille";
-    str = str.replaceAll('&#39;', "'");
-    str = str.replaceAll('\u00e9', "é");
-    str = str.replaceAll('\u00c9', "E");
-    console.log("a", str)
-    return str
-}
-// cleanString("asd")
 async function CRUD_post(ref, object) {
 
     setDoc(ref, object)

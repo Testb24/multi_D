@@ -21,6 +21,7 @@ import GestionVivi from './pages/hc/gestionVivi/GestionVivi';
 import AnalyseTrajets from './pages/hc/analyseTrajets/AnalyseTrajets';
 import AnalyseVoff from './pages/hc/analyseVoff/AnalyseVoff';
 import AnalyseVdef from './pages/hc/analyseVdef/AnalyseVdef';
+import AnalyseProfil from './pages/hc/analyseProfil/AnalyseProfil';
 import AnalyseZ from './pages/attaques/analyseZ/AnalyseZ';
 
 function App() {
@@ -36,10 +37,9 @@ function App() {
         <Route exact path='/reset' element={<Reset />} />
         <Route exact path='/profil' element={<Profil />} />
 
-
-        <Route exact path='/attaques/add' element={<AddAttaque />} />
-        <Route exact path='/attaques/list' element={<AttaqueList />} />
-
+        <Route exact path='/input/attaque' element={<AddAttaque />} />
+        <Route exact path='/input/list' element={<AttaqueList />} />
+        <Route exact path='/input/profil' element={<AnalyseZ />} />
 
         <Route exact path='/admin/players' element={
           <ProtectedRoute2 role="admin">
@@ -76,11 +76,12 @@ function App() {
             <AnalyseVdef />
           </ProtectedRoute2>
         } />
-        <Route exact path='/attaques/z' element={
-          // <ProtectedRoute2 role="hc">
-            <AnalyseZ />
-          // </ProtectedRoute2>
+        <Route exact path='/hc/profil' element={
+          <ProtectedRoute2 role="hc">
+            <AnalyseProfil />
+          </ProtectedRoute2>
         } />
+
 
         <Route exact path='/defence/mur/*' element={<PageAllMur />} />
         <Route exact path='/defence/synchro' element={<PageAllSynchro />} />

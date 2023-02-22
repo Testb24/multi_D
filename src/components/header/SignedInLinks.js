@@ -84,11 +84,11 @@ const SignedInLinks = () => {
 
   const location = useLocation();
 
-  const [tab, setTab] = useState("attaques")
+  const [tab, setTab] = useState("input")
 
   useEffect(() => {
 
-    if (location.pathname.split("/").includes("attaques")) { setTab("attaques") }
+    if (location.pathname.split("/").includes("input")) { setTab("input") }
     else if (location.pathname.split("/").includes("defence")) { setTab("defence") }
     else if (location.pathname.split("/").includes("admin")) { setTab("admin") }
     else if (location.pathname.split("/").includes("profil")) { setTab("profil") }
@@ -105,7 +105,7 @@ const SignedInLinks = () => {
         <ul className="right">
           {data.role && data.role.includes("admin") && <li><NavLink to='/admin'>Admin</NavLink></li>}
           {data.role && data.role.includes("hc") && <li><NavLink to='/hc'>HC</NavLink></li>}
-          <li><NavLink to='/attaques' >Attaques</NavLink></li>
+          <li><NavLink to='/input/attaque' >Input</NavLink></li>
           <li><NavLink to='/defence' >{"Mur, Synchro & Spy"}</NavLink></li>
           <li><NavLink to='/' onClick={disconnect}>Déconnexion</NavLink></li>
           <li><NavLink to='/profil' className="btn pink lighten-1">{data.pseudo}</NavLink></li>
@@ -114,11 +114,11 @@ const SignedInLinks = () => {
 
       <div className='nav-content'>
 
-        {tab === "attaques" &&
+        {tab === "input" &&
           <ul className="tabs tabs-transparent">
-            <li className="tab"><NavLink to='/attaques/add'>Nouvelle Attaque</NavLink></li>
-            <li className="tab"><NavLink to='/attaques/list'>Liste des Attaques</NavLink></li>
-            <li className="tab"><NavLink to='/attaques/z'>{"Analyse Z"}</NavLink></li>
+            <li className="tab"><NavLink to='/input/attaque'>Attaque</NavLink></li>
+            {/* <li className="tab"><NavLink to='/input/list'>Liste des Attaques</NavLink></li> */}
+            <li className="tab"><NavLink to='/input/profil'>{"Profil joueur"}</NavLink></li>
           </ul>}
 
         {tab === "defence" &&
@@ -136,6 +136,7 @@ const SignedInLinks = () => {
             <li className="tab"><NavLink to='/hc/wall'>{"Validation mur, spy et synchros"}</NavLink></li>
             <li className="tab"><NavLink to='/hc/vivis'>{"Gestion vivis"}</NavLink></li>
             <li className="tab"><NavLink to='/hc/vdef'>{"Analyse vdef"}</NavLink></li>
+            <li className="tab"><NavLink to='/hc/profil'>{"Analyse profils"}</NavLink></li>
           </ul>}
 
         {tab === "admin" && data.role && data.role.includes("admin") &&
