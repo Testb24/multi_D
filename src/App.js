@@ -21,7 +21,7 @@ import GestionVivi from './pages/hc/gestionVivi/GestionVivi';
 import AnalyseTrajets from './pages/hc/analyseTrajets/AnalyseTrajets';
 import AnalyseVoff from './pages/hc/analyseVoff/AnalyseVoff';
 import AnalyseVdef from './pages/hc/analyseVdef/AnalyseVdef';
-import AnalyseZ from './pages/hc/analyseZ/AnalyseZ';
+import AnalyseZ from './pages/attaques/analyseZ/AnalyseZ';
 
 function App() {
   return (
@@ -76,10 +76,10 @@ function App() {
             <AnalyseVdef />
           </ProtectedRoute2>
         } />
-        <Route exact path='/hc/z' element={
-          <ProtectedRoute2 role="hc">
+        <Route exact path='/attaques/z' element={
+          // <ProtectedRoute2 role="hc">
             <AnalyseZ />
-          </ProtectedRoute2>
+          // </ProtectedRoute2>
         } />
 
         <Route exact path='/defence/mur/*' element={<PageAllMur />} />

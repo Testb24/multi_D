@@ -118,7 +118,7 @@ const SignedInLinks = () => {
           <ul className="tabs tabs-transparent">
             <li className="tab"><NavLink to='/attaques/add'>Nouvelle Attaque</NavLink></li>
             <li className="tab"><NavLink to='/attaques/list'>Liste des Attaques</NavLink></li>
-            <li className="tab"><NavLink to='/hc/z'>{"Analyse Z"}</NavLink></li>
+            <li className="tab"><NavLink to='/attaques/z'>{"Analyse Z"}</NavLink></li>
           </ul>}
 
         {tab === "defence" &&
