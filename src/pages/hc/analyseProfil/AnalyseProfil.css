@@ -56,6 +56,10 @@ summary {
     font-weight: bold;
     margin: -0.5em -0.5em 0;
     padding: 0.5em;
+    cursor: pointer;
+}
+summary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 details[open] {
@@ -71,6 +75,9 @@ details[open] summary {
     /* background-color: rgb(218, 219, 125); */
     background-color: transparent;
     /* background-color: rgb(223, 223, 223); */
+}
+details[open] summary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .collapsible_maison_table{
