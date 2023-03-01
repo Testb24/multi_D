@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../config/functionFB";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import M from 'materialize-css';
+import attInc from "../../assets/attInc.gif";
+
+import { CRUD_get } from './signedInLinks_functions';
+
 const SignedInLinks = () => {
 
   const [userData, setUserData] = useState(false)
@@ -68,7 +72,15 @@ const SignedInLinks = () => {
     // if (!user) return navigate("/");
     // console.log(user)
     fetchUserDataDB();
+    fetchAttaquesAlly()
   }, []);
+
+  const [attaquesAlly, setAttaquesAlly] = useState(0)
+  async function fetchAttaquesAlly() {
+    let t = await CRUD_get("count", "attaques")
+    // console.log(t.number)
+    setAttaquesAlly(t.number)
+  }
 
   const disconnect = async () => {
     const auth = getAuth();
@@ -99,6 +111,9 @@ const SignedInLinks = () => {
 
   // console.log(data.role)
   // console.log(data.role.includes("admin"))
+
+
+
   return (
     <>
       <div className="nav-wrapper">
@@ -109,6 +124,23 @@ const SignedInLinks = () => {
           <li><NavLink to='/defence' >{"Mur, Synchro & Spy"}</NavLink></li>
           <li><NavLink to='/' onClick={disconnect}>Déconnexion</NavLink></li>
           <li><NavLink to='/profil' className="btn pink lighten-1">{data.pseudo}</NavLink></li>
+          <li style={{
+            display: "flex",
+            // backgroundColor: "white"
+          }}>
+            {attaquesAlly}
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                backgroundImage: "url(" + attInc + ")",
+                // backgroundPosition: "-0px 0", //26
+                // border:"1px solid white"
+                margin: "auto 5px"
+              }}
+            >
+            </div>
+          </li>
         </ul>
       </div>
 

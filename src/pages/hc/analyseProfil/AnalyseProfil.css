@@ -1,15 +1,42 @@
-.analyseZ_alerte_lvl1{
+.analyseZ_alerte_lvl1 {
     font-size: 1.3em;
     font-weight: 700;
     color: rgb(170, 3, 3);
 }
-.analyseZ_alerte_lvl2{
+
+.analyseZ_alerte_lvl2 {
     font-size: 1.2em;
     font-weight: 600;
     color: rgb(134, 74, 4);
 }
-.analyseZ_alerte_lvl3{
+
+.analyseZ_alerte_lvl3 {
     font-size: 1em;
     font-weight: 500;
     color: black;
+}
+
+.analyseZ_hc_th.div {
+    position: absolute;
+    background-color: red;
+}
+
+.analyzeZ_hc_help {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+    margin-top: 0;
+}
+
+.analyseZ_hc_th>div:hover .analyzeZ_hc_help {
+    visibility: visible;
+    position: relative;
+    left: 30px;
+    top: 5px;
+    width: 200px;
+    height: auto;
+
+    background-color: rgb(242, 255, 231);
+    border: 1px solid black;
+    margin-top: 0;
 }

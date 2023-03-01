@@ -49,8 +49,9 @@ export default function AnalyseProfil() {
 
     let temp = await CRUD_getAll("z");
     let PlayerWatched_Uid = []
-
+    // console.log(temp)
     temp.forEach(profil => {
+      // console.log()
       PlayerWatched_Uid.push(profil.Uid);
     })
     // console.log(PlayerWatched_Uid)
@@ -78,6 +79,18 @@ export default function AnalyseProfil() {
   //   var elems = document.querySelectorAll('.collapsible');
   //   var instances = M.Collapsible.init(elems);
   // });
+
+  function cleanString(str) {
+
+    // let a = "Armure d&#39;\u00e9caille";
+    str = str.replaceAll('&#39;', "'");
+    str = str.replaceAll('\\u00e9', "é");
+    str = str.replaceAll('\\u00c9', "E");
+    str = str.replaceAll('\\u00e8', "è");
+    // console.log(str)
+    // console.log("a", str)
+    return str
+  }
 
   useEffect(() => {
     M.AutoInit();
@@ -146,106 +159,156 @@ export default function AnalyseProfil() {
 
                       <thead>
                         <tr>
-                          <th><div
-                            style={{
-                              width: "22px",
-                              height: "22px",
-                              backgroundImage: "url(" + img_clock + ")",
-                              backgroundPosition: "-0px 0", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "22px",
-                              backgroundImage: "url(" + img_attack + ")",
-                              backgroundPosition: "-0px 0", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "22px",
-                              height: "24px",
-                              backgroundImage: "url(" + img_defence + ")",
-                              backgroundPosition: "-0px 0", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "24px",
-                              height: "20px",
-                              backgroundImage: "url(" + img_xp + ")",
-                              backgroundPosition: "-0px 0", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "26px",
-                              backgroundImage: "url(" + img_stuff + ")",
-                              backgroundPosition: "-0px 0", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "26px",
-                              backgroundImage: "url(" + img_stuff + ")",
-                              backgroundPosition: "0 -26px ", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "26px",
-                              backgroundImage: "url(" + img_stuff + ")",
-                              backgroundPosition: "0 -52px", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "26px",
-                              backgroundImage: "url(" + img_stuff + ")",
-                              backgroundPosition: "0 -78px", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "26px",
-                              backgroundImage: "url(" + img_stuff + ")",
-                              backgroundPosition: "0 -104px", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
-                          <th><div
-                            style={{
-                              width: "26px",
-                              height: "26px",
-                              backgroundImage: "url(" + img_stuff + ")",
-                              backgroundPosition: "0 -130px", //26
-                              // border:"1px solid white"
-                              margin: "auto"
-                            }}
-                          /></th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "22px",
+                                height: "22px",
+                                backgroundImage: "url(" + img_clock + ")",
+                                backgroundPosition: "-0px 0", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>heure d'enregistrement du profil</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "22px",
+                                backgroundImage: "url(" + img_attack + ")",
+                                backgroundPosition: "-0px 0", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Points off</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "22px",
+                                height: "24px",
+                                backgroundImage: "url(" + img_defence + ")",
+                                backgroundPosition: "-0px 0", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Points def</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "24px",
+                                height: "20px",
+                                backgroundImage: "url(" + img_xp + ")",
+                                backgroundPosition: "-0px 0", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Xp héros</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "26px",
+                                backgroundImage: "url(" + img_stuff + ")",
+                                backgroundPosition: "-0px 0", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Casque</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "26px",
+                                backgroundImage: "url(" + img_stuff + ")",
+                                backgroundPosition: "0 -26px ", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Armure</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "26px",
+                                backgroundImage: "url(" + img_stuff + ")",
+                                backgroundPosition: "0 -52px", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Bras gauche</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "26px",
+                                backgroundImage: "url(" + img_stuff + ")",
+                                backgroundPosition: "0 -78px", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Bras droit</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "26px",
+                                backgroundImage: "url(" + img_stuff + ")",
+                                backgroundPosition: "0 -104px", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Chaussures</p>
+                            </div>
+                          </th>
+
+                          <th className='analyseZ_hc_th'>
+                            <div
+                              style={{
+                                width: "26px",
+                                height: "26px",
+                                backgroundImage: "url(" + img_stuff + ")",
+                                backgroundPosition: "0 -130px", //26
+                                // border:"1px solid white"
+                                margin: "auto"
+                              }}
+                            >
+                              <p className='analyzeZ_hc_help'>Monture</p>
+                            </div>
+                          </th>
                         </tr>
                       </thead>
 
@@ -255,7 +318,7 @@ export default function AnalyseProfil() {
                         // console.log(c.rightHand.id)
                         // console.log(playerOff.screen[i - 1].rightHand.id)
                         // }
-                        
+
                         return (
                           <tbody key={i}>
                             <tr>
@@ -263,20 +326,20 @@ export default function AnalyseProfil() {
                               {/* <th>{"\u00c9"}</th>
                               <th>{"'"}</th>
                               <th>{"Armure \d&#39;\u00e9caille"}</th> */}
-                              <th>{c.time ? new Date(c.time).toLocaleTimeString() : "<!>"}</th>
+                              <th>{c.time ? new Date(c.time).toLocaleTimeString() : new Date(c.time).toLocaleDateString() !== new Date().toLocaleDateString() ? new Date(c.time).toLocaleTimeString() : "<!>"}</th>
                               <th>{i !== 0 && c.ptOff === playerOff.screen[i - 1].ptOff ? "/" : c.ptOff}</th>
                               <th>{i !== 0 && c.ptDef === playerOff.screen[i - 1].ptDef ? "/" : c.ptDef}</th>
                               <th>{i !== 0 && c.xpZ === playerOff.screen[i - 1].xpZ ? "/" : c.xpZ}</th>
-                              <th>{i !== 0 && c.helmet.id === playerOff.screen[i - 1].helmet.id ? "/" : c.helmet.description + "(" + c.helmet.tier + ")"}</th>
-                              <th>{i !== 0 && c.body.id === playerOff.screen[i - 1].body.id ? "/" : c.body.description + "(" + c.body.tier + ")"}</th>
+                              <th>{i !== 0 && c.helmet.id === playerOff.screen[i - 1].helmet.id ? "/" : cleanString(c.helmet.description) + "(" + c.helmet.tier + ")"}</th>
+                              <th>{i !== 0 && c.body.id === playerOff.screen[i - 1].body.id ? "/" : cleanString(c.body.description) + "(" + c.body.tier + ")"}</th>
                               {/* <th>{c.body.description}</th>
                               <th>{decodeURIComponent(c.body.description)}</th>
                               <th>{c.body.description.normalize('NFC')}</th>
                               <th>{c.body.description.normalize('NFD')}</th> */}
-                              <th>{i !== 0 && c.leftHand.id === playerOff.screen[i - 1].leftHand.id ? "/" : c.leftHand.description + "(" + c.leftHand.tier + ")"}</th>
-                              <th>{i !== 0 && c.rightHand.id === playerOff.screen[i - 1].rightHand.id ? "/" : c.rightHand.description + "(" + c.rightHand.tier + ")"}</th>
-                              <th>{i !== 0 && c.shoes.id === playerOff.screen[i - 1].shoes.id ? "/" : c.shoes.description + "(" + c.shoes.tier + ")"}</th>
-                              <th>{i !== 0 && c.horse.id === playerOff.screen[i - 1].horse.id ? "/" : c.horse.description + "(" + c.horse.tier + ")"}</th>
+                              <th>{i !== 0 && c.leftHand.id === playerOff.screen[i - 1].leftHand.id ? "/" : cleanString(c.leftHand.description) + "(" + c.leftHand.tier + ")"}</th>
+                              <th>{i !== 0 && c.rightHand.id === playerOff.screen[i - 1].rightHand.id ? "/" : cleanString(c.rightHand.description) + "(" + c.rightHand.tier + ")"}</th>
+                              <th>{i !== 0 && c.shoes.id === playerOff.screen[i - 1].shoes.id ? "/" : cleanString(c.shoes.description) + "(" + c.shoes.tier + ")"}</th>
+                              <th>{i !== 0 && c.horse.id === playerOff.screen[i - 1].horse.id ? "/" : cleanString(c.horse.description) + "(" + c.horse.tier + ")"}</th>
                             </tr>
                           </tbody>
                         )

@@ -112,8 +112,9 @@ function cleanString(str) {
 
     // let a = "Armure d&#39;\u00e9caille";
     str = str.replaceAll('&#39;', "'");
-    str = str.replaceAll('\u00e9', "é");
-    str = str.replaceAll('\u00c9', "E");
+    str = str.replaceAll('\\u00e9', "é");
+    str = str.replaceAll('\\u00c9', "E");
+    str = str.replaceAll('\\u00e8', "è");
     console.log("a", str)
     return str
 }
