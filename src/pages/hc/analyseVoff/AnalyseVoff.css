@@ -206,3 +206,15 @@
 
 /* =================================== */
 /* =================================== */
+
+
+.AVoff_profil_info {
+    margin: auto;
+    width: 50%;
+}
+
+.AVoff_profil_info_titre {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 700;
+}

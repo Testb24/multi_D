@@ -48,28 +48,36 @@ async function CRUD_put(bank, object) {
     const ref = doc(db, bank, objectTemp.id);
     setDoc(ref, objectTemp)
         .then(docRef => {
-            M.toast({ html:bank + " mis à jour avec succès", displayLength: 4000 });
+            M.toast({ html: bank + " mis à jour avec succès", displayLength: 4000 });
         })
         .catch(err => {
             console.error(err);
             console.log(err.message);
             console.log(err);
-            M.toast({ html:bank + " mise à jour : ERROR", displayLength: 4000 });
+            M.toast({ html: bank + " mise à jour : ERROR", displayLength: 4000 });
         });
 }
 async function CRUD_delete(bank, id) {
     console.log("delete " + bank + " / id " + id)
 
-    db.collection(bank).doc(id).delete()
-        .then(docRef => {
-            M.toast({ html:"mur supprimé avec succès", displayLength: 4000 });
-        })
-        .catch(err => {
-            console.error(err);
-            console.log(err.message);
-            console.log(err);
-            M.toast({ html:"suppression : ERROR", displayLength: 4000 });
-        });
+    try {
+        await deleteDoc(doc(db, bank, id));
+    } catch (error) {
+        M.toast({ html: bank + " supprimé avec succès (" + id + ")", displayLength: 4000 });
+    }
+
+    // db.collection(bank).doc(id).delete()
+    //     .then(docRef => {
+
+    //     })
+    //     .catch(err => {
+    //         console.error(err);
+    //         console.log(err.message);
+    //         console.log(err);
+    //         M.toast({ html:"suppression : ERROR", displayLength: 4000 });
+    //     });
+
+
 }
 async function CRUD_getAll(bank) {
     console.log("lecture all " + bank)
@@ -87,7 +95,7 @@ async function CRUD_getAll(bank) {
         return sortie;
     } catch (err) {
         console.error(err);
-        M.toast({ html:"An error occured while fetching " + bank, displayLength: 4000 });
+        M.toast({ html: "An error occured while fetching " + bank, displayLength: 4000 });
         return [];
     }
 

@@ -17,7 +17,7 @@ import {
     saveSpy
 } from './functions_analyseVoff';
 // import TestChart from './TestChart';
-
+// import M from 'materialize-css';
 export default function AnalyseVoff() {
 
     const [attaquesByVoff, setAttaquesByVoff] = useState([]);
@@ -165,6 +165,9 @@ export default function AnalyseVoff() {
                 <button className='btn AVoff_btn_loc_right' onClick={() => changeNumero(1)}>{">>>"}</button>
             </div>
 
+            <div className='AVoff_profil_info'>
+                <p className='AVoff_profil_info_titre'>Infos sur le profil</p>
+            </div>
 
             <table className='centered AVoff_table_1'>
                 <thead>
@@ -404,7 +407,7 @@ export default function AnalyseVoff() {
 
                             {attaquesByVoff[numero].village.troops && attaquesByVoff[numero].village.troops.length > 0 && attaquesByVoff[numero].village.troops.map((t, index) => {
                                 if (t != 0) {
-                                    return (<td key={index}>{t*1000}</td>)
+                                    return (<td key={index}>{t * 1000}</td>)
                                 } else {
                                     return (<td key={index}>{" "}</td>)
                                 }

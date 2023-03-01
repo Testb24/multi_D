@@ -29,42 +29,53 @@ export default function AnalyseVdef() {
 
     async function populateAttaques() {
         const attaques = await CRUD_getAll("attaques");
-        let aa = [];
-        let temp = [];
-        attaques.forEach(att => temp.push(att.def))
+        // console.log(attaques)
+
+        //créé les deux listes des vivis def et off
+        let dataDefV5 = [];
+        attaques.forEach(att => dataDefV5.push(att.def))
         let dataOffV5 = []
         attaques.forEach(att => dataOffV5.push(att.off))
-        // console.log(temp)
-        temp = temp.filter((el, index) => temp.findIndex(e => e.X === el.X && e.Y === el.Y) === index)
-        // console.log(temp)
+        // console.log(dataDefV5)
+        dataDefV5 = dataDefV5.filter((el, index) => dataDefV5.findIndex(e => e.X === el.X && e.Y === el.Y) === index)
+        // console.log(dataDefV5)
 
+        //pour chaque vivi def, cherche des infos dans la liste v5
         let defDataFrom5 = [];
-        for (let k = 0; k < temp.length; k++) {
+        for (let k = 0; k < dataDefV5.length; k++) {
             try {
-                let a = await CRUD_get("villages_5", temp[k]._id);
-                if (a)
+                let a = await CRUD_get("villages_5", dataDefV5[k]._id);
+                if (a) {
                     defDataFrom5.push(a);
+                }
+
             } catch (error) {
                 console.log(error)
             }
         }
 
+        //pour chaque vivi off, cherche des infos dans la liste v5
         let offDataFrom5 = [];
+        // console.log(dataOffV5)
         dataOffV5 = dataOffV5.filter((el, index) => dataOffV5.findIndex(e => e._id === el._id) === index)
         for (let k = 0; k < dataOffV5.length; k++) {
             try {
                 // if(defDataFrom5)
+                // console.log(dataOffV5[k]._id)
                 let a = await CRUD_get("villages_5", dataOffV5[k]._id);
-                if (a)
+                if (a) {
                     offDataFrom5.push(a);
+                }
             } catch (error) {
                 console.log(error)
             }
         }
 
-        defDataFrom5 = defDataFrom5.concat(temp)
+        //pour chaque vivi def, créé un objet town
+        defDataFrom5 = defDataFrom5.concat(dataDefV5)
         let towns = defDataFrom5.filter((el, index) => defDataFrom5.findIndex(e => e._id === el._id) === index)
 
+        //pour chaque objet town, ajoute toutes les attaques et le village
         let goodArr = []
         towns.forEach(town => {
             let attTemp = []
@@ -79,15 +90,26 @@ export default function AnalyseVdef() {
                 attaques: attTemp
             })
         })
+        // console.log(offDataFrom5)
         goodArr.map(v => {
+            // console.log(v.attaques)
+            // console.log("AAAAAA")
+            //pour chaque attaque de chaque town (vivi def), ajoute la pt min et la pt max
             v.attaques.map((att, i) => {
+                // console.log("BBB")
                 // console.log(att)
-                // console.log(dataOffV5)
-                let voffTemp = offDataFrom5.find(v => v._id === att.off._id)
-                let PTmin = voffTemp.PTmin ? voffTemp.PTmin : 0;
-                let PTmax = voffTemp.PTmax ? voffTemp.PTmax : 20;
+                // console.log(offDataFrom5)
+                let voffTemp = offDataFrom5.find(vi => vi._id === att.off._id)
                 // console.log(voffTemp)
-                v.attaques[i] = { ...v.attaques[i], PTmin: PTmin, PTmax: PTmax }
+                // console.log(voffTemp._id)
+                // console.log(v)
+                if (voffTemp !== undefined) {
+                    let PTmin = voffTemp.PTmin ? voffTemp.PTmin : 0;
+                    let PTmax = voffTemp.PTmax ? voffTemp.PTmax : 20;
+                    // console.log(voffTemp)
+                    v.attaques[i] = { ...v.attaques[i], PTmin: PTmin, PTmax: PTmax }
+                }
+
             })
         })
 

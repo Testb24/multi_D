@@ -94,6 +94,8 @@ const SignedInLinks = () => {
     });
   }
 
+
+
   const location = useLocation();
 
   const [tab, setTab] = useState("input")
@@ -103,16 +105,14 @@ const SignedInLinks = () => {
     if (location.pathname.split("/").includes("input")) { setTab("input") }
     else if (location.pathname.split("/").includes("defence")) { setTab("defence") }
     else if (location.pathname.split("/").includes("admin")) { setTab("admin") }
-    else if (location.pathname.split("/").includes("profil")) { setTab("profil") }
     else if (location.pathname.split("/").includes("hc")) { setTab("hc") }
+    else if (location.pathname.split("/").includes("acc")) { setTab("acc") }
     // else setTab(null)
 
   }, [location])
 
   // console.log(data.role)
   // console.log(data.role.includes("admin"))
-
-
 
   return (
     <>
@@ -123,7 +123,7 @@ const SignedInLinks = () => {
           <li><NavLink to='/input/attaque' >Input</NavLink></li>
           <li><NavLink to='/defence' >{"Mur, Synchro & Spy"}</NavLink></li>
           <li><NavLink to='/' onClick={disconnect}>Déconnexion</NavLink></li>
-          <li><NavLink to='/profil' className="btn pink lighten-1">{data.pseudo}</NavLink></li>
+          <li><NavLink to='/acc' className="btn pink lighten-1">{data.pseudo}</NavLink></li>
           <li style={{
             display: "flex",
             // backgroundColor: "white"

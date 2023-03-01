@@ -24,6 +24,8 @@ import AnalyseVdef from './pages/hc/analyseVdef/AnalyseVdef';
 import AnalyseProfil from './pages/hc/analyseProfil/AnalyseProfil';
 import AnalyseZ from './pages/attaques/analyseZ/AnalyseZ';
 
+import M from 'materialize-css';
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,7 +37,7 @@ function App() {
         <Route exact path='/signup' element={<SignUp />} />
 
         <Route exact path='/reset' element={<Reset />} />
-        <Route exact path='/profil' element={<Profil />} />
+        <Route exact path='/acc' element={<Profil />} />
 
         <Route exact path='/input/attaque' element={<AddAttaque />} />
         <Route exact path='/input/list' element={<AttaqueList />} />

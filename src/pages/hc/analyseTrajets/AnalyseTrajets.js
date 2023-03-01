@@ -14,8 +14,10 @@ import {
     calcul_tps_depart
 } from './functions_analyseTrajets';
 import TestChart from './TestChart';
-
+// import M from 'materialize-css';
 export default function AnalyseTrajets() {
+
+    // M.AutoInit();
 
     const [attaquesByVoff, setAttaquesByVoff] = useState([]);
     const [numero, setNumero] = useState(0);
@@ -155,7 +157,7 @@ export default function AnalyseTrajets() {
 
 
     function handleSave() {
-        console.log(attaquesByVoff)
+        // console.log(attaquesByVoff)
         console.log("saves lvl pt");
         let viviToSave = { ...attaquesByVoff[numero].village, PTmin: lvlPt[0], PTmax: lvlPt[1] }
         saveVivi5([viviToSave]);

@@ -16,7 +16,7 @@ import { db, app, auth } from '../../config/firebaseConfig';
 
 
 async function CRUD_get(bank, id) {
-    console.log("lecture " + bank + " / id " + id)
+    // console.log("lecture " + bank + " / id " + id)
 
     const docRef = doc(db, bank, id);
     const docSnap = await getDoc(docRef);
